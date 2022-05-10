@@ -5,7 +5,8 @@ class Community < ApplicationRecord
   has_many :comments, through: :posts
   has_many :favorites, through: :posts
   
-  validates :community_name, :area, :address, presence: true
+  validates :community_name, :address, presence: true, uniqueness: true
+  validates :area
   validates :description, length: {maximum: 150 }
   
 end
