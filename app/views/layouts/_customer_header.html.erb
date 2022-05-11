@@ -1,0 +1,51 @@
+<header class="Header">
+  <nav class="navbar navbar-expand-lg navbar-light p-3" style="background-color:#fffacd;" >
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <div class= 'top_logo'>
+          整いました
+          <!--<%= image_tag('Nagano_Cake_Logo.png', size: '90x90') %>-->
+        </div>
+      </a>
+        <div class="login_customer_disp_name">
+          <b class='custo'>
+            ようこそ、<%= current_customer.name %>さん！</br>
+            今日も整って行きましょう！！
+          </b>
+        </div>
+      <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li>
+            <%= link_to new_community_path, class: 'heaedr-link' do %>
+              <b>コミュニティを作る</b>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to communities_path, class: 'heaedr-link' do %>
+              <b>コミュニティを探す</b>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to registration_communities_path, class: 'heaedr-link' do %>
+              <b>マイコミュニティ</b>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to customer_path, class: 'heaedr-link' do %>
+              <b>マイページ</b>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_customer_session_path, method: :delete, class: 'heaedr-link' do %>
+              <i class="fas fa-sign-in-alt"><b>ログアウト</b>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

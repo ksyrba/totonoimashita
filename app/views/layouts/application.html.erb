@@ -10,6 +10,17 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% if customer_signed_in? %>
+      <%= render 'customer_header' %>
+    <% elsif admin_signed_in? %>
+      <%= render 'admin_header' %>
+    <% else %>
+      <%= render 'first_header' %>
+    <% end %>
+    <main>
+      <p id="notice"><%= notice %></p>
+      <%= yield %>
+    </main>
+    <%= render 'footer' %>
   </body>
 </html>
