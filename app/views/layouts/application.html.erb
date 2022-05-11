@@ -11,16 +11,16 @@
 
   <body>
     <% if customer_signed_in? %>
-      <%= render 'customer_header' %>
+      <%= render 'layouts/customer_header' %>
     <% elsif admin_signed_in? %>
-      <%= render 'admin_header' %>
+      <%= render 'layouts/admin_header' %>
     <% else %>
-      <%= render 'first_header' %>
+      <%= render 'layouts/first_header' %>
     <% end %>
     <main>
       <p id="notice"><%= notice %></p>
       <%= yield %>
     </main>
-    <%= render 'footer' %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
