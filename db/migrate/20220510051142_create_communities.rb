@@ -5,6 +5,7 @@ class CreateCommunities < ActiveRecord::Migration[6.1]
       t.integer :area, null: false
       t.string :address, null: false, unique: true
       t.text :description
+      t.integer :owner_id, null: false
 
       t.timestamps
     end
