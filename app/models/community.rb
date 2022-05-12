@@ -9,4 +9,7 @@ class Community < ApplicationRecord
   validates :area
   validates :description, length: {maximum: 150 }
   
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :area
+  
 end
