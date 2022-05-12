@@ -91,3 +91,8 @@ p.footertopline{
   top: 120px;
   right: 5px;
 }
+
+.title > h3 {
+  display: inline-block;
+  background: linear-gradient(transparent 80%, #ff0000 50%);
+}
