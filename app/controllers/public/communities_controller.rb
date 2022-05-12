@@ -1,11 +1,11 @@
 class Public::CommunitiesController < ApplicationController
   before_action :authenticate_customer!
   before_action :ensure_correct_customer, only: [:edit, :update]
-  
+
   def new
     @community = Community.new
   end
-  
+
   def create
     @community = Community.new(community_params)
     @community.owner_id = current_customer.id
@@ -14,7 +14,7 @@ class Public::CommunitiesController < ApplicationController
       redirect_to registration_communities_path
     else
       render 'new'
-    end  
+    end
   end
 
   def index
@@ -28,7 +28,7 @@ class Public::CommunitiesController < ApplicationController
   def edit
     @community = Community.find(params[:id])
   end
-  
+
   def update
     if @community.update(community_params)
       flash[:notice] = "コミュニティが更新されました"
@@ -37,19 +37,19 @@ class Public::CommunitiesController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def destroy
     @community = Community.find(params[:id])
   end
-  
-  
-  private 
-  
+
+
+  private
+
   def community_params
-    params.require(:community).permit(:community_name, :area_id, :adress, :description, :image)
+    params.require(:community).permit(:community_name, :area_id, :address, :description, :image)
   end
-  
-  def ensure_correct_user
+
+  def ensure_correct_customer
     @community = Community.find(params[:id])
     unless @community.owner_id == current_customer.id
       redirect_to communities_path
