@@ -9,7 +9,7 @@ class Public::CommunitiesController < ApplicationController
   def create
     @community = Community.new(community_params)
     @community.owner_id = current_customer.id
-    if @community.save(community_params)
+    if @community.save
       flash[:notice] = "コミュニティが新しく作成されました"
       redirect_to registration_communities_path
     else
