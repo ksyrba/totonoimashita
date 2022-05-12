@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2022_05_10_055306) do
 
   create_table "communities", force: :cascade do |t|
     t.string "community_name", null: false
-    t.integer "area", null: false
+    t.integer "area_id", null: false
     t.string "address", null: false
     t.text "description"
     t.integer "owner_id", null: false
