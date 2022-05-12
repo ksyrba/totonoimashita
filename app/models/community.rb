@@ -5,11 +5,21 @@ class Community < ApplicationRecord
   has_many :comments, through: :posts
   has_many :favorites, through: :posts
   
+  has_one_attached :image
+  
   validates :community_name, :address, presence: true, uniqueness: true
-  validates :area
+  validates :area, presence: true
   validates :description, length: {maximum: 150 }
   
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :area
+  
+  def get_image
+    if image.attached?
+      image
+    else
+      'no_image.jpeg'
+    end
+  end
   
 end
