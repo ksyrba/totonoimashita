@@ -1,16 +1,16 @@
 <div class="container">
-  <div class="row">
-    <div class="search col-2">
-      <%= render 'search' %>
+  <div class="row title">
+    <h3>コミュニティ一覧</h3>
+    <span>（全<%= @communities.count %>件）</span>
+  </div>
+  <div class="row d-flex justify-content-end">
+    <div class="search">
+      <%= render 'search', community: @community %>
     </div>
-    <div class="community_index col-10">
-      <div class="title">
-        <h3>コミュニティ一覧</h3>
-        <span>（全<%= @communities.count %>件）</span>
-      </div>
-      <div class="contents">
-        <%= render 'index', communities: @communities %>
-      </div>
+  </div>
+  <div class="row">
+    <div class="community_index col-12">
+      <%= render 'index', communities: @communities %>
     </div>
   </div>
 </div>

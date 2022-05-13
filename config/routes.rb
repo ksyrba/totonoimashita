@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   scope module: :public do
     root :to =>'homes#top'
     resources :customers, only:[:show, :edit, :update]
-    resources :communities
+    resources :communities do
+      get "join" => "communities#join"
+    end
     resources :registration_communities, only:[:index, :destroy]
     resources :posts, only:[:create, :show, :edit, :update, :destroy] do
       resources :post_comments, only: [:create, :destroy]
@@ -26,7 +28,9 @@ Rails.application.routes.draw do
   namespace :admin do
     root :to =>'homes#top'
     resources :customers, only:[:show, :edit, :update]
-    resources :communities
+    resources :communities do
+      get "join" => "communities#join"
+    end
     resources :registration_communities, only:[:index, :destroy]
     resources :posts, only:[:create, :show, :edit, :update, :destroy] do
       resources :comments, only: [:create, :destroy]

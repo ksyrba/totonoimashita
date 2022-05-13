@@ -1,0 +1,34 @@
+<div class="row">
+  <% communities.each do |community| %>
+    <div class="cards d-flex justify-content-left">
+      <div class="card_body">
+        <%= link_to community_path(community) do %>
+          <div class="card_title">
+            <h5><u><%= community.community_name %></u></h5>
+          </div>
+          <div class="card_text">
+            <%= image_tag community.get_image, size: "150x150" %>
+            <div class="card_sidebar">
+              <p><%= community.area.name %></p>
+              <p>
+                <i class="fa fa-solid fa-user"></i>：<%= community.customers.count %>人
+              </p>
+              <p>
+                <i class="fa fa-solid fa-paste"></i>：<%= community.posts.count %>個
+              </p>
+              <p>
+                <% if community.owner_id == current_customer.id %>
+                  <%= link_to '編集', edit_community_path(community), class: "btn btn-sm btn-success" %>
+                <% elsif @group.users.include?(current_user) %>
+                  <%= link_to '退会', communities_path, method: :delete, class: "btn btn-sm btn-danger" %>
+                <% else %>
+                  <%= link_to '参加', community_join_path(community), class: "btn btn-sm btn-success" %>
+                <% end %>
+              </p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -96,3 +96,33 @@ p.footertopline{
   display: inline-block;
   background: linear-gradient(transparent 80%, #ff0000 50%);
 }
+
+.search {
+  display: flex;
+}
+
+.search_bar {
+  margin-right: 30px;
+}
+
+.card_body {
+  padding: 5px;
+  margin: 5px;
+  border-radius: 15px;
+  background-color: #faebd7;
+  width: 270px;
+}
+
+.card_title {
+  text-align: center;
+  margin-bottom : 5px;
+}
+
+.card_text {
+  display: flex;
+  justify-content: center;
+}
+
+.card_sidebar {
+  margin-left: 15px;
+}

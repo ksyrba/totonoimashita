@@ -21,5 +21,9 @@ class Community < ApplicationRecord
       'no_image.jpeg'
     end
   end
+  
+  def self.search(word)
+    where(["community_name like? OR address like?", "%#{word}%", "%#{word}%"])
+  end
 
 end
