@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row">
-    <div class="col-12 offset-3">
+  <div class="row justify-content-center">
+    <div class="col-10">
       <div class="text-error">
         <%= render 'layouts/errors', obj: @community %>
       </div>
@@ -8,8 +8,32 @@
         <h3>コミュニティの編集</h3>
         <p>※サウナ施設毎に1つのコミュニティを作成できます</p>
       </div>
-      <div class="form col-8">
-        <%= render 'form_edit', community: @community %>      
+      <div class="edit_form col-10">
+        <%= form_with model:@community, local:true do |f| %>
+          <div class="form-group col-6">
+            <%= f.label :"施設名（コミュニティ名）" %>
+            <%= f.text_field :community_name, class: 'form-control' %>
+          </div>
+          <div class="form-group col-8 pt-2">
+            <%= f.label :"所在地" %>
+            <%= f.collection_select(:area_id, Area.all, :id, :name, {}, {class:"area-select"}) %>
+          </div>
+          <div class="form-group col-10 pt-2">
+            <%= f.label :"住所" %>
+            <%= f.text_field :address, class: 'form-control' %>
+          </div>
+          <div class="form-group col-10 pt-2">
+            <%= f.label :"説明" %>
+            <%= f.text_area :description, placeholder: "コミュニティ（施設）について自由にご記載ください", class: 'form-control', rows: '4' %>
+          </div>
+          <div class="form-group col-6 pt-2">
+            <%= f.label :"施設の画像" %></br>
+            <%= f.file_field :image, accept: "image/*" %>
+          </div>
+          <div class="form-group pt-2">
+            <%= f.submit "コミュニティを更新する" ,class: 'btn btn-success' %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
