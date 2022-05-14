@@ -19,7 +19,7 @@ class Public::CommunitiesController < ApplicationController
   end
 
   def index
-    @communities = Community.all.order(created_at: :desc)
+    @communities = Community.page(params[:page]).order(created_at: :desc)
   end
   
   def join
