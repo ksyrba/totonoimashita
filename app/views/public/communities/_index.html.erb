@@ -7,7 +7,7 @@
             <h5><u><%= community.community_name %></u></h5>
           </div>
           <div class="card_text">
-            <%= image_tag community.get_image, size: "150x150" %>
+            <%= image_tag community.get_image, size: "180x180" %>
             <div class="card_sidebar">
               <p><%= community.area.name %></p>
               <p>
@@ -16,15 +16,20 @@
               <p>
                 <i class="fa fa-solid fa-paste"></i>：<%= community.posts.count %>個
               </p>
-              <p>
+              <div class="bottun">
+                <p class="bottun_edit">
                 <% if community.owner_id == current_customer.id %>
                   <%= link_to '編集', edit_community_path(community), class: "btn btn-sm btn-success" %>
-                <% elsif @group.users.include?(current_user) %>
-                  <%= link_to '退会', communities_path, method: :delete, class: "btn btn-sm btn-danger" %>
+                <% end %>
+                </p>
+                <p class="bottun_join">
+                <% if community.customers.include?(current_customer) %>
+                  <%= link_to '退会', community_path(community), method: :delete, class: "btn btn-sm btn-danger" %>
                 <% else %>
                   <%= link_to '参加', community_join_path(community), class: "btn btn-sm btn-success" %>
                 <% end %>
-              </p>
+                </p>
+              </div>
             </div>
           </div>
         <% end %>

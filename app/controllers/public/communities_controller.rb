@@ -24,7 +24,7 @@ class Public::CommunitiesController < ApplicationController
   
   def join
     @community = Community.find(params[:community_id])
-    @community.users << current_customer
+    @community.customers << current_customer
     redirect_to  communities_path
   end
 
@@ -47,7 +47,7 @@ class Public::CommunitiesController < ApplicationController
 
   def destroy
     @community = Community.find(params[:id])
-    @group.users.delete(current_user)
+    @community.customers.delete(current_customer)
     redirect_to registration_communities_path
   end
 

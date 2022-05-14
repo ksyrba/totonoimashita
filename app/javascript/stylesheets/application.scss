@@ -97,8 +97,18 @@ p.footertopline{
   background: linear-gradient(transparent 80%, #ff0000 50%);
 }
 
+.title {
+  position: relative;
+}
+
+.bottun_new {
+  position: absolute;
+  right: 20px;
+}
+
 .search {
   display: flex;
+  margin-top: 10px;
 }
 
 .search_bar {
@@ -121,8 +131,19 @@ p.footertopline{
 .card_text {
   display: flex;
   justify-content: center;
+  lige-height: 0.5em;
 }
 
 .card_sidebar {
   margin-left: 15px;
 }
+
+.bottun_edit {
+  margin-bottom : 5px;
+}
+
+// .card_sidebar > .btn {
+//   display: flex;
+//   justify-content: center;
+// }
+
