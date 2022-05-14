@@ -1,0 +1,24 @@
+<div class="community_info">
+  <%= image_tag community.get_image, size: "100x100" %>
+  <p>
+    <i class="fa fa-solid fa-user"></i>：<%= community.customers.count %>人
+  </p>
+  <p>
+    <i class="fa fa-solid fa-paste"></i>：<%= community.posts.count %>個
+  </p>
+</div>
+<table class="table table-bordered table-hover table_participant">
+  <thead>
+    <th class="table-secondary">参加者一覧</th>
+  </thead>
+  <tbody>
+    <% customers.each do |customer| %>
+      <td>
+        <%= link_to customer_path(customer) do %>
+          <%= image_tag customer.get_image, size: "30x30" %>
+          <%= customer.name %>
+        <% end %>
+      </td>
+    <% end %>
+  </tbody>
+</table>

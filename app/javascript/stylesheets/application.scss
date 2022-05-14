@@ -131,19 +131,38 @@ p.footertopline{
 .card_text {
   display: flex;
   justify-content: center;
-  lige-height: 0.5em;
 }
 
 .card_sidebar {
   margin-left: 15px;
 }
 
-.bottun_edit {
+.edit_button {
   margin-bottom : 5px;
 }
 
-// .card_sidebar > .btn {
-//   display: flex;
-//   justify-content: center;
-// }
+.join {
+  text-align: center;
+  margin-top: 10px;
+}
 
+.join > .join_button {
+  margin-top: 10px;
+}
+
+.return_button {
+  float: left;
+}
+
+.table_participant {
+  margin-top: 10px;
+}
+
+.post_form {
+  border: solid 3px #000000;
+  padding-top: 10px;
+}
+
+.complement {
+  font-size: 12px;
+}

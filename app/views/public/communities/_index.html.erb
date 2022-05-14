@@ -16,19 +16,19 @@
               <p>
                 <i class="fa fa-solid fa-paste"></i>：<%= community.posts.count %>個
               </p>
-              <div class="bottun">
-                <p class="bottun_edit">
+              <div class="button">
+                <div class="edit_button">
                 <% if community.owner_id == current_customer.id %>
                   <%= link_to '編集', edit_community_path(community), class: "btn btn-sm btn-success" %>
                 <% end %>
-                </p>
-                <p class="bottun_join">
+                </div>
+                <div class="join_button">
                   <% if community.customers.include?(current_customer) %>
                     <%= link_to '退会', community_path(community), method: :delete, class: "btn btn-sm btn-danger" %>
                   <% else %>
                     <%= link_to '参加', community_join_path(community), class: "btn btn-sm btn-success" %>
                   <% end %>
-                </p>
+                </div>
               </div>
             </div>
           </div>

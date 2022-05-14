@@ -21,7 +21,7 @@ class Public::CommunitiesController < ApplicationController
   def index
     @communities = Community.page(params[:page]).order(created_at: :desc)
   end
-  
+
   def join
     @community = Community.find(params[:community_id])
     @community.customers << current_customer
@@ -30,7 +30,9 @@ class Public::CommunitiesController < ApplicationController
 
   def show
     @community = Community.find(params[:id])
+    @customers = @community.customers
     @customer_community = CustomerCommunity.find_by(customer_id: current_customer.id, community_id: params[:id])
+    @post = Post.new
   end
 
   def edit
