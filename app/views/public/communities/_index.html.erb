@@ -1,7 +1,7 @@
 <div class="row">
   <% communities.each do |community| %>
     <div class="cards d-flex justify-content-left">
-      <div class="card_body">
+      <div class="card_body" data-toggle="tooltip" data-placement="top" title="<%= community.description %>">
         <%= link_to community_path(community) do %>
           <div class="card_title">
             <h5><u><%= community.community_name %></u></h5>

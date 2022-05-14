@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2022_05_10_055306) do
     t.string "community_name", null: false
     t.integer "area_id", null: false
     t.string "address", null: false
+    t.string "phone_number"
     t.text "description"
     t.integer "owner_id", null: false
     t.datetime "created_at", precision: 6, null: false

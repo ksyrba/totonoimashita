@@ -8,6 +8,7 @@ class Community < ApplicationRecord
   has_one_attached :image
 
   validates :community_name, :address, presence: true, uniqueness: true
+  validates :phone_number, uniqueness: true
   validates :area_id, presence: true
   validates :description, length: {maximum: 150 }
 
@@ -21,7 +22,7 @@ class Community < ApplicationRecord
       'no_image.jpeg'
     end
   end
-  
+
   def self.search(word)
     where(["community_name like? OR address like?", "%#{word}%", "%#{word}%"])
   end

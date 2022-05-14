@@ -24,7 +24,11 @@
           </div>
           <div class="form-group col-10 pt-2">
             <%= f.label :"説明" %>
-            <%= f.text_area :description, placeholder: "コミュニティ（施設）について自由にご記載ください", class: 'form-control', rows: '4' %>
+            <%= f.text_area :description, placeholder: "コミュニティもしくは施設について自由にご記載ください（任意）", class: 'form-control', rows: '4' %>
+          </div>
+          <div class="form-group col-10 pt-2">
+            <%= f.label :"電話番号" %>
+            <%= f.text_field :phone_number, placeholder: "ハイフンなしの半角数字でご記載ください", class: 'form-control' %>
           </div>
           <div class="form-group col-6 pt-2">
             <%= f.label :"施設の画像" %></br>

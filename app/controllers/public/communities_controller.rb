@@ -58,7 +58,7 @@ class Public::CommunitiesController < ApplicationController
   private
 
   def community_params
-    params.require(:community).permit(:community_name, :area_id, :address, :description, :image)
+    params.require(:community).permit(:community_name, :area_id, :address, :phone_number, :description, :image)
   end
 
   def ensure_correct_customer
