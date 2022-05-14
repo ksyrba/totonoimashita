@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     root :to =>'homes#top'
     resources :customers, only:[:show, :edit, :update]
     resources :communities do
+      resources :customer_community, only:[:create]
       get "join" => "communities#join"
     end
     resources :registration_communities, only:[:index, :destroy]
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
     root :to =>'homes#top'
     resources :customers, only:[:show, :edit, :update]
     resources :communities do
+      resources :customer_community, only:[:create]
       get "join" => "communities#join"
     end
     resources :registration_communities, only:[:index, :destroy]

@@ -1,2 +1,16 @@
-<h1>Public::Communities#show</h1>
-<p>Find me in app/views/public/communities/show.html.erb</p>
+<% if @customer_community.present? %>
+  <div class="form-group">
+    <div class="schedule-item">
+      <div class="schedule-item-header text-left">
+        <p class="bold">Task</p>
+      </div>
+      <div class="schedule-item-body text-left">
+        <p><%= @community.community_name %></p>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="actions">
+    <%= link_to '参加', community_join_path(@community), class: "btn btn-sm btn-success" %>
+  </div>
+<% end %>

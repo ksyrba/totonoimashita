@@ -9,7 +9,7 @@ class Public::CommunitiesController < ApplicationController
   def create
     @community = Community.new(community_params)
     @community.owner_id = current_customer.id
-    @community.users << current_user
+    @community.customers << current_customer
     if @community.save
       flash[:notice] = "コミュニティが新しく作成されました"
       redirect_to registration_communities_path
@@ -25,11 +25,12 @@ class Public::CommunitiesController < ApplicationController
   def join
     @community = Community.find(params[:community_id])
     @community.customers << current_customer
-    redirect_to  communities_path
+    redirect_to  community_path(@community)
   end
 
   def show
     @community = Community.find(params[:id])
+    @customer_community = CustomerCommunity.find_by(customer_id: current_customer.id, community_id: params[:id])
   end
 
   def edit
@@ -48,7 +49,7 @@ class Public::CommunitiesController < ApplicationController
   def destroy
     @community = Community.find(params[:id])
     @community.customers.delete(current_customer)
-    redirect_to registration_communities_path
+    redirect_to communities_path
   end
 
 

@@ -23,11 +23,11 @@
                 <% end %>
                 </p>
                 <p class="bottun_join">
-                <% if community.customers.include?(current_customer) %>
-                  <%= link_to '退会', community_path(community), method: :delete, class: "btn btn-sm btn-danger" %>
-                <% else %>
-                  <%= link_to '参加', community_join_path(community), class: "btn btn-sm btn-success" %>
-                <% end %>
+                  <% if community.customers.include?(current_customer) %>
+                    <%= link_to '退会', community_path(community), method: :delete, class: "btn btn-sm btn-danger" %>
+                  <% else %>
+                    <%= link_to '参加', community_join_path(community), class: "btn btn-sm btn-success" %>
+                  <% end %>
                 </p>
               </div>
             </div>
@@ -36,5 +36,4 @@
       </div>
     </div>
   <% end %>
-  <%= paginate communities %>
 </div>
