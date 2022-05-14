@@ -1,0 +1,9 @@
+<div class="community_image">
+  <%= image_tag @community.get_image, size: "150x150" %>
+</div>
+<div class="community_detail_right">
+  <p><i class="fa fa-solid fa-user"></i> 参加者数：<%= @community.customers.count %>人</p>
+  <p><i class="fa fa-solid fa-paste"></i> 投稿数：<%= @community.posts.count %></p>
+  <p><i class="fa fas fa-map-marked-alt"></i> 住所：<%= @community.address %></p>
+  <p><i class="fa fa-solid fa-audio-description"></i> 説明：<%= @community.description %></p>
+</div>

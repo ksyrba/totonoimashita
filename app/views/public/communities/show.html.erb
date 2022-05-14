@@ -10,11 +10,16 @@
       </div>
     </div>
     <div class="row">
+      <div class="community_detail col-12">
+        <%= render 'topbar', community: @community %>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-3">
-        <%= render 'side', customers: @customers %>
+        <%= render 'sidebar', customers: @customers %>
       </div>
       <div class="col-5">
-        
+        <div class="post_index"></div>
       </div>
       <div class="post_form col-4">
         <h5><u>サ活情報の投稿</u></h5>
@@ -29,8 +34,8 @@
           </div>
           <div class="form-group col-4 pt-2">
             <%= f.label :"総時間" %>
-            <%= f.select :total_time, 
-              [ ["15分", 0.25], ["30分", 0.5], ["45分", 0.75] ,["1時間", 1], ["1時間15分", 1.25], ["1時間30分", 1.5], ["1時間45分", 1.75], ["2時間", 2], ["2時間15分", 2.25], ["2時間30分", 2.5], ["2時間45分", 2.75], ["3時間", 3] ], 
+            <%= f.select :total_time,
+              [ ["15分", 0.25], ["30分", 0.5], ["45分", 0.75] ,["1時間", 1], ["1時間15分", 1.25], ["1時間30分", 1.5], ["1時間45分", 1.75], ["2時間", 2], ["2時間15分", 2.25], ["2時間30分", 2.5], ["2時間45分", 2.75], ["3時間", 3] ],
               prompt: "時間を選択してください", class: 'form-control' %>
           </div>
           <div class="form-group col-12 pt-2">
