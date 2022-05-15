@@ -33,6 +33,8 @@ class Public::CommunitiesController < ApplicationController
     @customers = @community.customers
     @customer_community = CustomerCommunity.find_by(customer_id: current_customer.id, community_id: params[:id])
     @post = Post.new
+    #
+    @posts = Post.where(community_id: @community.id).page(params[:page]).order(created_at: :desc)
   end
 
   def edit

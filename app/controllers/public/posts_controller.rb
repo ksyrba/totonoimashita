@@ -1,30 +1,31 @@
 class Public::PostsController < ApplicationController
-  efore_action :authenticate_customer!
+  before_action :authenticate_customer!
   before_action :ensure_correct_post, only: [:edit, :update]
-  
+
   def create
     @post = Post.new(post_params)
+    @post.customer_id = current_customer.id
     if @post.save
       flash[:notice] = "サ活情報がが投稿されました"
-      redirect_to community_path(@community)
+      redirect_to community_path(params[:post][:community_id])
     else
       @community = Community.find(params[:id])
       @customers = @community.customers
       @customer_community = CustomerCommunity.find_by(customer_id: current_customer.id, community_id: params[:id])
-      render 'community/show'
+      render 'public/community/show'
     end
   end
-  
+
   def show
   end
 
   def edit
   end
-  
+
   private
-  
+
   def post_params
-    params.require(:post).permit(:visit_date, :set_number, :total_time, :impression)
+    params.require(:post).permit(:visit_date, :set_number, :total_time, :impression, :community_id)
   end
 
   def ensure_correct_post

@@ -15,20 +15,20 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-3">
+      <div class="participant col-3">
         <%= render 'sidebar', customers: @customers %>
       </div>
-      <div class="col-5">
-        <div class="post_index"></div>
+      <div class="post_index col-6">
+        <%= render 'public/posts/post_index', posts: @posts %>
       </div>
-      <div class="post_form col-4">
+      <div class="post_form col-3">
         <h5><u>サ活情報の投稿</u></h5>
-        <%= form_with model:@post, local:true do |f| %>
+        <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
           <div class="form-group col-8">
             <%= f.label :"日付" %>
             <%= f.date_field :visit_date, class: 'form-control' %>
           </div>
-          <div class="form-group col-4 pt-2">
+          <div class="form-group col-6 pt-2">
             <%= f.label :"セット数" %>
             <%= f.number_field :set_number, class: 'form-control', min: 0, max: 10 %>
           </div>
@@ -45,6 +45,7 @@
           <p class="complement">※セット数：サウナ→水風呂→外気浴を1セットとして何セット行ったか︎︎</p>
           <p class="complement">※総時間：サウナ・水風呂・外気浴の合計時間</p>
           <div class="form-group pt-2">
+            <%= f.hidden_field :community_id, :value => @community.id %>
             <%= f.submit "投稿する" ,class: 'btn btn-success ml-4' %>
           </div>
         <% end %>
