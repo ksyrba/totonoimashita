@@ -16,10 +16,36 @@
           <%= render 'public/communities/sidebar', customers: @customers %>
         </div>
         <div class="comment_index col-6">
-        
+          <div class="cards d-flex justify-content-center">
+            <div class="card_post">
+              <div class="row card_customer_name">
+                <%= link_to customer_path(@post_active.customer_id), class: "customer_name" do %>
+                  <p><%= image_tag @post_active.customer.get_image, size: "30x30" %></p>
+                  <h5><%= @post_active.customer.name %></h5>
+                <% end %>
+                <p class="active_time">
+                  <i class="fa fas fa-calendar-alt"></i> サ活日：<%= @post_active.visit_date.strftime('%Y/%m/%d') %>
+                </p>
+              </div>
+              <div class="card_post_detail">
+                <p><i class="fa fas fa-sort-amount-up"></i> セット数：<%= @post_active.set_number %>回</p>
+                <p><i class="fa fas fa-clock"></i> 総時間：<%= @post_active.total_time %>時間</p>
+                <p><i class="fa fas fa-user-edit"></i> 感想など：<%= @post_active.impression %></p>
+                <div class="comment_button">
+                  <%= link_to "コメントをする" ,post_active_path(@post_active), class: "btn btn-sm btn-success" %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="post_form col-3">
           <h5><u>コメントの投稿</u></h5>
+          <%= form_with model: [@post_active, @comment] do |f| %>
+            <div class="form-group col-12">
+              <%= f.text_area :comment, placeholder: "コメントをここに", class: 'form-control', rows: '5' %>
+              <%= f.submit "送信する", class: 'btn btn-success mt-2' %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

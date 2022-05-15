@@ -1,10 +1,10 @@
 class Public::CommentsController < ApplicationController
   def create
-    @post = Post.find(params[:post_id])
-    @comment = current_user.comments.new(comment_params)
-    @comment.post_id = post.id
+    @post_active = PostActive.find(params[:post_active_id])
+    @comment = current_customer.comments.new(comment_params)
+    @comment.post_active_id = post_active.id
     @comment.save
-    redirect_to post_image_path(post_image)
+    redirect_to post_active_path(post_active)
   end
 
   private
