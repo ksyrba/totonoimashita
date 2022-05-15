@@ -18,7 +18,7 @@
         <div class="comment_index col-6">
           <div class="cards d-flex justify-content-center">
             <div class="card_post">
-              <div class="row card_customer_name">
+              <div class="row card_comment_name">
                 <%= link_to customer_path(@post_active.customer_id), class: "customer_name" do %>
                   <p><%= image_tag @post_active.customer.get_image, size: "30x30" %></p>
                   <h5><%= @post_active.customer.name %></h5>
@@ -37,6 +37,21 @@
               </div>
             </div>
           </div>
+          <% @comments.each do |comment| %>
+            <div class="cards d-flex justify-content-center">
+              <div class="card_comment">
+                <div class="row card_comment_name">
+                  <%= link_to customer_path(@post_active.customer_id), class: "customer_name" do %>
+                    <p><%= image_tag @post_active.customer.get_image, size: "25x25" %></p>
+                    <h6><%= @post_active.customer.name %></h6>
+                  <% end %>
+                </div>
+                <div class="comment_body">
+                  <p><%= comment.comment %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
         </div>
         <div class="post_form col-3">
           <h5><u>コメントの投稿</u></h5>

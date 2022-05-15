@@ -22,6 +22,7 @@ class Public::PostActivesController < ApplicationController
     @community = @post_active.community
     @customers = @post_active.community.customers
     @comment = Comment.new
+    @comments = @post_active.comments
   end
 
   def edit
