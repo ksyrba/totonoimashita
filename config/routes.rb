@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       get "join" => "communities#join"
     end
     resources :registration_communities, only:[:index, :destroy]
-    resources :posts, only:[:create, :show, :edit, :update, :destroy] do
+    resources :post_actives, only:[:create, :show, :edit, :update, :destroy] do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
       get "join" => "communities#join"
     end
     resources :registration_communities, only:[:index, :destroy]
-    resources :posts, only:[:create, :show, :edit, :update, :destroy] do
+    resources :post_actives, only:[:create, :show, :edit, :update, :destroy] do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end

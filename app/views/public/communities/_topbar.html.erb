@@ -1,10 +1,10 @@
 <div class="community_image">
-  <%= image_tag @community.get_image, size: "200x180" %>
+  <%= image_tag community.get_image, size: "200x180" %>
 </div>
 <div class="community_detail_right">
-  <p><i class="fa fa-solid fa-user"></i> 参加者数：<%= @community.customers.count %>人</p>
-  <p><i class="fa fa-solid fa-paste"></i> 投稿数：<%= @community.posts.count %></p>
-  <p><i class="fa fas fa-map-marked-alt"></i> 住所：<%= @community.address %></p>
-  <p><i class="fa fas fa-phone"></i> 電話番号：<%= @community.phone_number %></p></p>
-  <p><i class="fa fa-solid fa-audio-description"></i> 説明：<%= @community.description %></p>
+  <p><i class="fa fa-solid fa-user"></i> 参加者数：<%= community.customers.count %>人</p>
+  <p><i class="fa fa-solid fa-paste"></i> 投稿数：<%= community.post_actives.count %></p>
+  <p><i class="fa fas fa-map-marked-alt"></i> 住所：<%= community.address %></p>
+  <p><i class="fa fas fa-phone"></i> 電話番号：<%= community.phone_number %></p></p>
+  <p><i class="fa fa-solid fa-audio-description"></i> 説明：<%= community.description %></p>
 </div>

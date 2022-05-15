@@ -32,8 +32,8 @@ class Public::CommunitiesController < ApplicationController
     @community = Community.find(params[:id])
     @customers = @community.customers
     @customer_community = CustomerCommunity.find_by(customer_id: current_customer.id, community_id: params[:id])
-    @post = Post.new
-    @posts = Post.where(community_id: @community.id).page(params[:page]).order(created_at: :desc)
+    @post_active = PostActive.new
+    @post_actives = PostActive.where(community_id: @community.id).page(params[:page]).order(created_at: :desc)
   end
 
   def edit

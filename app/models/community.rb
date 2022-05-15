@@ -1,9 +1,9 @@
 class Community < ApplicationRecord
   has_many :customer_communities, dependent: :destroy
-  has_many :posts, dependent: :destroy
+  has_many :post_actives, dependent: :destroy
   has_many :customers, through: :customer_communities
-  has_many :comments, through: :posts
-  has_many :favorites, through: :posts
+  has_many :comments, through: :post_actives
+  has_many :favorites, through: :post_actives
 
   has_one_attached :image
 

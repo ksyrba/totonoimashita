@@ -1,4 +1,4 @@
-class Post < ApplicationRecord
+class PostActive < ApplicationRecord
   belongs_to :customer
   belongs_to :community
   has_many :comments, dependent: :destroy
