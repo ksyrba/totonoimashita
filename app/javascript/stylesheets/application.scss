@@ -115,7 +115,7 @@ p.footertopline{
   margin-right: 30px;
 }
 
-.card_body {
+.card_community {
   padding: 5px;
   margin: 5px;
   border-radius: 15px;
@@ -179,4 +179,36 @@ p.footertopline{
 
 .complement {
   font-size: 12px;
+}
+
+.customer_name {
+  display: flex;
+  // justify-content: left;
+  padding-left: 20px;
+}
+
+.card_customer_name {
+ 
+}
+
+.active_time {
+  margin-left : 250px;
+}
+
+.card_post {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  background-color: #78FF94;
+  width: 100%;
+}
+
+.card_post_detail {
+  position: relative;
+}
+
+.comment_button {
+  position: absolute;
+  top: 80px;
+  right: 5px;
 }

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     end
     resources :registration_communities, only:[:index, :destroy]
     resources :posts, only:[:create, :show, :edit, :update, :destroy] do
-      resources :post_comments, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
     get "searches/search_community"=>'searches#search_community'

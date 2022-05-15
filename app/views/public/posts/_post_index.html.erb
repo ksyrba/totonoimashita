@@ -1,16 +1,22 @@
 <% posts.each do |pos| %>
   <div class="cards d-flex justify-content-center">
-    <div class="card_body">
-      <div class="card_customer_name d-flex">
-        <%= link_to customer_path(pos.customer_id) do %>
+    <div class="card_post">
+      <div class="row card_customer_name">
+        <%= link_to customer_path(pos.customer_id), class: "customer_name" do %>
           <p><%= image_tag pos.customer.get_image, size: "30x30" %></p>
           <h5><%= pos.customer.name %></h5>
         <% end %>
+        <p class="active_time">
+          <i class="fa fas fa-calendar-alt"></i> サ活日：<%= pos.visit_date.strftime('%Y/%m/%d') %>
+        </p>
       </div>
-      <div class="card_post_detail d-flex">
-        <p>サ活日<%= pos.visit_date %></p>
-        <p>セット数<%= pos.set_number %>回</p>
-        <p>総時間<%= pos.total_time %>時間</p>
+      <div class="card_post_detail">
+        <p><i class="fa fas fa-sort-amount-up"></i> セット数：<%= pos.set_number %>回</p>
+        <p><i class="fa fas fa-clock"></i> 総時間：<%= pos.total_time %>時間</p>
+        <p><i class="fa fas fa-user-edit"></i> 感想など：<%= pos.impression %></p>
+        <div class="comment_button">
+          <%= link_to "コメントをする" ,post_path(pos), class: "btn btn-sm btn-success" %>
+        </div>
       </div>
     </div>
   </div>
