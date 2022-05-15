@@ -1,0 +1,15 @@
+<table class="table table-bordered table-hover table_participant">
+  <thead>
+    <th class="table-secondary">参加者一覧</th>
+  </thead>
+  <tbody>
+    <% customers.each do |customer| %>
+      <td>
+        <%= link_to customer_path(customer) do %>
+          <%= image_tag customer.get_image, size: "30x30" %>
+          <%= customer.name %>
+        <% end %>
+      </td>
+    <% end %>
+  </tbody>
+</table>
