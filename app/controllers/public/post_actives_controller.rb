@@ -36,7 +36,7 @@ class Public::PostActivesController < ApplicationController
 
   def ensure_correct_post_active
     @post_active = PostActive.find(params[:id])
-    @community = Community.find(params[:id])
+    @community = @post_active.community
     unless @post_active.customer_id == current_customer.id
       redirect_to community_path(@community)
     end

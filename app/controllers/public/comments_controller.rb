@@ -12,6 +12,12 @@ class Public::CommentsController < ApplicationController
       render 'public/post_actives/show'
     end
   end
+  
+  def destroy
+    @post_active = PostActive.find(params[:post_active_id])
+    Comment.find(params[:id]).destroy
+    redirect_to post_active_path(@post_active)
+  end
 
   private
 

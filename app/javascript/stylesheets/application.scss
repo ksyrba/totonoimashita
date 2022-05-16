@@ -193,8 +193,14 @@ p.footertopline{
   padding-left: 20px;
 }
 
+.card_customer_name {
+  position: relative;
+}
+
 .post_time {
-  margin-left : 200px;
+  // margin-left : 200px;
+  position: absolute;
+  right: 20px;
 }
 
 .card_post, .card_comment {
@@ -214,11 +220,21 @@ p.footertopline{
 .card_post_under {
   display: flex;
   justify-content: right;
+  position: relative;
+}
+
+.card_post_button {
+  position: absolute;
+  left: 5px;
+  display: flex;
 }
 
 .heart_red {
   color:#e54747 !important;
-  
+}
+
+.comment_index {
+  border-top: dashed 3px #000000;
 }
 
 .comment_button {
@@ -227,6 +243,3 @@ p.footertopline{
   right: 5px;
 }
 
-.post_form {
-  padding-top: 10px;
-}
