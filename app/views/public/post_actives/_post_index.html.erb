@@ -42,7 +42,7 @@
             </div>
             <div class="delete_button">
             <% if post_active.customer_id == current_customer.id %>
-              <%= link_to '削除する', post_active_path(post_active), method: :delete, class: "btn-sm btn-danger" %>
+              <%= link_to '削除する', post_active_path(post_active), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn-sm btn-danger" %>
             <% end %>
             </div>
           </div>

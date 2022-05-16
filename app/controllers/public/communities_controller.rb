@@ -1,6 +1,6 @@
 class Public::CommunitiesController < ApplicationController
   before_action :authenticate_customer!
-  before_action :ensure_correct_customer, only: [:edit, :update]
+  before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
 
   def new
     @community = Community.new
@@ -51,7 +51,7 @@ class Public::CommunitiesController < ApplicationController
 
   def destroy
     @community = Community.find(params[:id])
-    @community.customers.delete(current_customer)
+    @community.customers.destroy(current_customer)
     redirect_to communities_path
   end
 
