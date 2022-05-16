@@ -34,7 +34,7 @@
     <%= link_to 'コミュニティを編集する', edit_community_path(community), class: "btn btn-bg btn-success" %>
   <% end %>
   </div>
-  <div class="join_button">
-    <%= link_to 'コミュニティを退会する', community_path(community), method: :delete, class: "btn btn-bg btn-danger" %>
+  <div class="exit_button mt-3">
+    <%= link_to 'コミュニティを退会する', community_path(community), method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn btn-bg btn-danger" %>
   </div>
 </div>

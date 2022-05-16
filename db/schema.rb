@@ -102,11 +102,11 @@ ActiveRecord::Schema.define(version: 2022_05_10_055306) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "customer_id"
-    t.integer "post_id"
+    t.integer "post_active_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_favorites_on_customer_id"
-    t.index ["post_id"], name: "index_favorites_on_post_id"
+    t.index ["post_active_id"], name: "index_favorites_on_post_active_id"
   end
 
   create_table "post_actives", force: :cascade do |t|
@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 2022_05_10_055306) do
   add_foreign_key "customer_communities", "communities"
   add_foreign_key "customer_communities", "customers"
   add_foreign_key "favorites", "customers"
-  add_foreign_key "favorites", "posts"
+  add_foreign_key "favorites", "post_actives"
   add_foreign_key "post_actives", "communities"
   add_foreign_key "post_actives", "customers"
 end

@@ -193,7 +193,7 @@ p.footertopline{
   padding-left: 20px;
 }
 
-.active_time {
+.post_time {
   margin-left : 200px;
 }
 
@@ -209,6 +209,16 @@ p.footertopline{
 
 .card_post_detail {
   position: relative;
+}
+
+.card_post_under {
+  display: flex;
+  justify-content: right;
+}
+
+.heart_red {
+  color:#e54747 !important;
+  
 }
 
 .comment_button {

@@ -8,7 +8,7 @@
           <p><%= image_tag post_active.customer.get_image, size: "30x30" %></p>
           <h5><%= post_active.customer.name %></h5>
         <% end %>
-        <p class="active_time">
+        <p class="post_time">
           投稿日：<%= post_active.created_at.strftime('%Y/%m/%d %R') %>
         </p>
       </div>
@@ -34,12 +34,28 @@
             </tr>
           </tbody>
         </table>
-        <!--<p><i class="fa fas fa-sort-amount-up"></i> セット数：<%= post_active.set_number %>回</p>-->
-        <!--<p><i class="fa fas fa-clock"></i> 総時間：<%= post_active.total_time %>時間</p>-->
-        <!--<p><i class="fa fas fa-user-edit"></i> 感想など：<%= post_active.impression %></p>-->
-        <!--<div class="comment_button">-->
-        <!--  <%= link_to "コメントをする" ,post_active_path(post_active), class: "btn btn-sm btn-success" %>-->
-        <!--</div>-->
+        <div class="card_post_under">
+          <p class="mr-3">
+            <% if post_active.favorited_by?(current_customer) %>
+              <%= link_to post_active_favorites_path(post_active), method: :delete, class: "heart_red" do %>
+                ♥
+              <% end %>
+              <%= post_active.favorites.count %> いいね
+            <% else %>
+              <%= link_to post_active_favorites_path(post_active), method: :post do %>
+                ♡
+              <% end %>
+              <%= post_active.favorites.count %> いいね
+            <% end %>
+          </p>
+          <p>
+            <%= link_to post_active_path(post_active) do %>
+              <i class="fa fas fa-comments"></i> 
+            <% end %>
+            <%= post_active.comments.count %> コメント
+          </p>
+        　<%= link_to "コメントをする" ,post_active_path(post_active), class: "btn btn-sm btn-success" %>
+        </div>
       </div>
       <% end %>
     </div>
