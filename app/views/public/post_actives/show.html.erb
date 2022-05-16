@@ -14,8 +14,10 @@
         </div>
         <div class="participant col-3">
           <%= render 'public/communities/sidebar', customers: @customers %>
+          <%= link_to "<<戻る" ,community_path(@community) %>
         </div>
         <div class="comment_index col-6">
+          <h5><u>投稿詳細</u></h5>
           <div class="cards d-flex justify-content-center">
             <div class="card_post">
               <div class="row card_comment_name">
