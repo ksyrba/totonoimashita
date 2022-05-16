@@ -121,6 +121,7 @@ p.footertopline{
   border-radius: 15px;
   background-color: #faebd7;
   width: 270px;
+  text-decoration: none;
 }
 
 .card_title {
@@ -156,17 +157,23 @@ p.footertopline{
 
 .community_detail {
   display: flex;
-}
-
-.community_detail {
   border-bottom: dashed 3px #000000;
   padding-bottom: 10px;
-  margin-top : 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.community_detail_right {
+.topbar_right {
+  position: absolute;
+  right: 0px;
+  margin-left: 10px;
+}
+
+
+.community_info {
   margin-left: 20px;
 }
+
 
 .table_participant {
   margin-top: 10px;
@@ -183,32 +190,56 @@ p.footertopline{
 
 .customer_name {
   display: flex;
-  // justify-content: left;
   padding-left: 20px;
 }
 
 .card_customer_name {
- 
+  position: relative;
 }
 
-.active_time {
-  margin-left : 250px;
+.post_time {
+  // margin-left : 200px;
+  position: absolute;
+  right: 20px;
 }
 
-.card_post {
+.card_post, .card_comment {
   padding: 10px;
   margin: 5px;
   border-radius: 10px;
-  background-color: #78FF94;
+  background-color: #CBFFD3	;
   width: 100%;
+  text-decoration: none;
+  color: #000000;
 }
 
 .card_post_detail {
   position: relative;
 }
 
+.card_post_under {
+  display: flex;
+  justify-content: right;
+  position: relative;
+}
+
+.card_post_button {
+  position: absolute;
+  left: 5px;
+  display: flex;
+}
+
+.heart_red {
+  color:#e54747 !important;
+}
+
+.comment_index {
+  border-top: dashed 3px #000000;
+}
+
 .comment_button {
   position: absolute;
-  top: 80px;
+  top: 20px;
   right: 5px;
 }
+

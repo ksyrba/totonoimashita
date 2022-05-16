@@ -1,6 +1,6 @@
 class Public::CommunitiesController < ApplicationController
   before_action :authenticate_customer!
-  before_action :ensure_correct_customer, only: [:edit, :update]
+  before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
 
   def new
     @community = Community.new
@@ -32,8 +32,8 @@ class Public::CommunitiesController < ApplicationController
     @community = Community.find(params[:id])
     @customers = @community.customers
     @customer_community = CustomerCommunity.find_by(customer_id: current_customer.id, community_id: params[:id])
-    @post = Post.new
-    @posts = Post.where(community_id: @community.id).page(params[:page]).order(created_at: :desc)
+    @post_active = PostActive.new
+    @post_actives = PostActive.where(community_id: @community.id).page(params[:page]).order(created_at: :desc)
   end
 
   def edit
@@ -51,7 +51,7 @@ class Public::CommunitiesController < ApplicationController
 
   def destroy
     @community = Community.find(params[:id])
-    @community.customers.delete(current_customer)
+    @community.customers.destroy(current_customer)
     redirect_to communities_path
   end
 

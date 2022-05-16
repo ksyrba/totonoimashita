@@ -5,7 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :customer_communities, dependent: :destroy
-  has_many :posts, dependent: :destroy
+  has_many :post_actives, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :communities, through: :customer_communities
