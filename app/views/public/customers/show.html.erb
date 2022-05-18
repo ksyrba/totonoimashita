@@ -1,5 +1,15 @@
 <div class="container">
   <div class="row">
-    
+    <div class="title">
+      <h3><%= @customer.name %>さんのサ活情報</h3>
+    </div>
+   </div>
+  <div class="row">
+    <div class="customer_detail col-4">
+      <%= render 'customer_info', customer: @customer %>
+    </div>
+    <div class="post_index col-6 offset-1" >
+      <%= render 'public/post_actives/post_index', post_actives: @post_actives %>
+    </div>
   </div>
 </div>

@@ -17,9 +17,9 @@ z-index: 100;
 }
 
 body {
-  padding-top: 130px; 
+  padding-top: 130px;
 }
-  
+
 
 .header_text {
   color: #333333;
@@ -56,7 +56,7 @@ p.footertopline{
   height: 200px;
   width: 100%;
   margin: 0 auto;
-  background-color: rgba( 255, 255, 230, 0.5); 
+  background-color: rgba( 255, 255, 230, 0.5);
 }
 
 .image_message {
@@ -170,18 +170,12 @@ p.footertopline{
 }
 
 
-.community_info {
-  margin-left: 20px;
-}
-
-
-.table_participant {
-  margin-top: 10px;
-}
-
 .post_form {
   border: solid 3px #000000;
+  border-radius: 15px;
   margin-top: 10px;
+  padding: 10px;
+  height: 650px;
 }
 
 .complement {
@@ -198,7 +192,6 @@ p.footertopline{
 }
 
 .post_time {
-  // margin-left : 200px;
   position: absolute;
   right: 20px;
 }
@@ -241,5 +234,23 @@ p.footertopline{
   position: absolute;
   top: 20px;
   right: 5px;
+}
+
+.profile_image {
+  text-align: center;
+}
+
+.customer_profile {
+  border: solid 3px #000000;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.post_form_edit {
+  border: solid 3px #000000;
+  border-radius: 15px;
+  margin-top: 10px;
+  padding: 10px;
+  height: 0px;
 }
 
