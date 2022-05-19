@@ -1,6 +1,6 @@
 class Public::PostActivesController < ApplicationController
   before_action :authenticate_customer!
-  before_action :ensure_correct_post_active, only: [:edit, :update]
+  before_action :ensure_correct_post_active, only: [:edit, :update, :de]
   protect_from_forgery
 
   def create
