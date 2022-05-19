@@ -2,14 +2,10 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
     @post_actives = @customer.post_actives
-    @this_month_post = @customer.post_actives.created_this_month
-    @this_year_post = @customer.post_actives.created_this_year
   end
 
   def edit
     @customer = Customer.find(params[:id])
-    @this_month_post = @customer.post_actives.created_this_month
-    @this_year_post = @customer.post_actives.created_this_year
   end
 
   def update
@@ -19,8 +15,6 @@ class Public::CustomersController < ApplicationController
       redirect_to customer_path(current_customer)
     else
       @post_actives = @customer.post_actives
-      @this_month_post = @customer.post_actives.created_this_month
-      @this_year_post = @customer.post_actives.created_this_year
       render 'show'
     end
   end
