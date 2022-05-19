@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
-  before_action :authenticate_customer!, except: [:index]
+  before_action :authenticate_customer!
   before_action :ensure_correct_customer, only: [:edit, :update]
   
   def show
