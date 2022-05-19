@@ -17,8 +17,7 @@ class Public::CustomersController < ApplicationController
       flash[:notice] = "ユーザー情報が更新されました"
       redirect_to customer_path(current_customer)
     else
-      @post_actives = @customer.post_actives
-      render 'show'
+      render 'edit'
     end
   end
 

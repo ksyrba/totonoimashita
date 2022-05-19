@@ -13,6 +13,7 @@ class Customer < ApplicationRecord
   has_one_attached :image
 
   validates :name, length: { minimum: 2, maximum: 20 }
+  validates :sex, :birthdate, :area_id, presence: true
   validates :introduction, length: {maximum: 50 }
 
   enum sex: { man: 1, woman: 2 }
@@ -27,11 +28,11 @@ class Customer < ApplicationRecord
       'no_image_user.jpeg'
     end
   end
-  
+
   def age
     (Date.today.strftime('%Y%m%d').to_i - birthdate.strftime('%Y%m%d').to_i) / 10000
   end
-  
+
   def total_set_number
     post_actives.sum(:set_number)
   end
