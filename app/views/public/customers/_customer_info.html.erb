@@ -37,11 +37,11 @@
     <tbody>
       <tr>
         <td width="40%">直近１ヶ月</td>
-        <td width="60%"><%= customer.post_actives.created_this_month.count %> 回</td>
+        <td width="60%"><%= customer.post_actives.visited_this_month.count %> 回</td>
       </tr>
       <tr>
         <td>直近１年間</td>
-        <td><%= customer.post_actives.created_this_year.count %> 回</td>
+        <td><%= customer.post_actives.visited_this_year.count %> 回</td>
       </tr>
       <tr>
         <td>トータル</td>
