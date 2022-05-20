@@ -19,6 +19,8 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
     get "searches/search_community"=>'searches#search_community'
+    get "searches/search_area"=>'searches#search_area'
+    
   end
 
 # 管理者

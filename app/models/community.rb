@@ -24,7 +24,7 @@ class Community < ApplicationRecord
   end
 
   def self.search(word)
-    where(["community_name like? OR address like?", "%#{word}%", "%#{word}%"])
+    where(["community_name like(?) OR address like(?)", "%#{word}%", "%#{word}%"])
   end
 
 end
