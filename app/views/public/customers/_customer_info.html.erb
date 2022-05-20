@@ -27,7 +27,7 @@
       </tr>
     </tbody>
   </table>
-  <% if customer.id == current_customer.id %>
+  <% if (customer.id == current_customer.id) && (customer.name != "ゲストユーザー")  %>
     <%= link_to 'ユーザー情報を編集する', edit_customer_path(current_customer), class: "btn btn-success ml-3" %>
   <% end %>
 </div>
