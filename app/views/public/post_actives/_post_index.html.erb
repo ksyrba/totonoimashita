@@ -46,18 +46,8 @@
             <% end %>
             </div>
           </div>
-          <p class="mr-3">
-            <% if post_active.favorited_by?(current_customer) %>
-              <%= link_to post_active_favorites_path(post_active), method: :delete, class: "heart_red" do %>
-                ♥
-              <% end %>
-              <%= post_active.favorites.count %> いいね
-            <% else %>
-              <%= link_to post_active_favorites_path(post_active), method: :post do %>
-                ♡
-              <% end %>
-              <%= post_active.favorites.count %> いいね
-            <% end %>
+          <p id="favorite_buttons_<%= post_active.id %>" class="mr-3">
+            <%= render 'public/favorites/favorite', post_active: post_active %>
           </p>
           <p>
             <%= link_to post_active_path(post_active) do %>

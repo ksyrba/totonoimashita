@@ -11,6 +11,7 @@ class Public::PostActivesController < ApplicationController
       redirect_to community_path(@post_active.community_id)
     else
       @community = Community.find(params[:post_active][:community_id])
+      @customers = @community.customers.page(params[:page]).per(20)
       @customer_community = CustomerCommunity.find_by(customer_id: current_customer.id, community_id: @community.id)
       @post_actives = PostActive.where(community_id: @community.id).page(params[:page]).per(10).order(created_at: :desc)
       render 'public/communities/show'
@@ -21,7 +22,7 @@ class Public::PostActivesController < ApplicationController
     @post_active = PostActive.find(params[:id])
     @customers = @post_active.community.customers.page(params[:page]).per(20)
     @comment = Comment.new
-    @comments = @post_active.comments.page(params[:page]).per(10)
+    @comments = @post_active.comments.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def edit

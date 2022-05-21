@@ -1,0 +1,20 @@
+<% comments.each do |comment| %>
+  <div class="cards d-flex justify-content-center">
+    <div class="card_comment">
+      <div class="row card_comment_name">
+        <%= link_to customer_path(comment.customer), class: "customer_name" do %>
+          <p><%= image_tag comment.customer.get_image, size: "25x25" %></p>
+          <h6><%= comment.customer.name %></h6>
+        <% end %>
+      </div>
+      <div class="comment_body">
+        <p><%= comment.comment %></p>
+      </div>
+      <div class="delete_button">
+        <% if comment.customer_id == current_customer.id %>
+          <%= link_to '削除する', post_active_comment_path(comment.post_active,comment), method: :delete, remote: true, "data-confirm" => "本当に削除しますか？", class: "btn-sm btn-danger" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

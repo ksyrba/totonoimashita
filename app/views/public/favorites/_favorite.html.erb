@@ -1,0 +1,11 @@
+<% if post_active.favorited_by?(current_customer) %>
+  <%= link_to post_active_favorites_path(post_active), method: :delete, remote: true do %>
+    <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+  <% end %>
+  <%= post_active.favorites.count %> いいね
+<% else %>
+  <%= link_to post_active_favorites_path(post_active), method: :post, remote: true do %>
+    <i class="fas fa-heart" aria-hidden="true"></i>
+  <% end %>
+  <%= post_active.favorites.count %> いいね
+<% end %>
