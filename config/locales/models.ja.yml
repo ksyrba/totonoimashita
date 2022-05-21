@@ -27,7 +27,7 @@ ja:
         set_number: セット数
         total_time: 総時間
         impression: 感想など
-      comment: 
+      comment:
         comment: コメント
 
     models:
