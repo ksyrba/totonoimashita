@@ -4,16 +4,17 @@
       <%= render 'layouts/errors', obj: @comment %>
     </div>
     <div class="title">
-      <h3><%= @community.community_name %></h3>
-      <span>（<%= @community.area.name %>）</span>
+      <h3><%= @post_active.community.community_name %></h3>
+      <span>（<%= @post_active.community.area.name %>）</span>
     </div>
     <div class="row">
       <div class="community_detail col-12">
-        <%= render 'public/communities/topbar', community: @community %>
+        <%= render 'public/communities/topbar', community: @post_active.community %>
       </div>
       <div class="participant col-3">
-        <%= render 'public/communities/sidebar', customers: @customers %>
-        <%= link_to "<<戻る" ,community_path(@community) %>
+        <%= render 'public/communities/sidebar', customers: @community.customers %>
+        <%= paginate @communitycustomers %>
+        <%= link_to "<<戻る" ,community_path(@post_active.community) %>
       </div>
       <div class="post_show col-6">
         <h5><u>投稿詳細</u></h5>
@@ -103,6 +104,7 @@
                 </div>
               </div>
             <% end %>
+            <%= paginate @comments %>
           </div>
         <% end %>
       </div>

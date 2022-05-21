@@ -11,19 +11,18 @@ class Public::PostActivesController < ApplicationController
       redirect_to community_path(@post_active.community_id)
     else
       @community = Community.find(params[:post_active][:community_id])
-      @customers = @community.customers
+
       @customer_community = CustomerCommunity.find_by(customer_id: current_customer.id, community_id: @community.id)
-      @post_actives = PostActive.where(community_id: @community.id).page(params[:page]).order(created_at: :desc)
+      @post_actives = PostActive.where(community_id: @community.id).page(params[:page]).per(10).order(created_at: :desc)
       render 'public/communities/show'
     end
   end
 
   def show
     @post_active = PostActive.find(params[:id])
-    @community = @post_active.community
-    @customers = @post_active.community.customers
+    @customers = @post_active.community.customers.page(params[:page]).per(20)
     @comment = Comment.new
-    @comments = @post_active.comments
+    @comments = @post_active.comments.page(params[:page]).per(10)
   end
 
   def edit

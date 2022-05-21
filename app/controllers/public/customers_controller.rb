@@ -4,7 +4,7 @@ class Public::CustomersController < ApplicationController
   
   def show
     @customer = Customer.find(params[:id])
-    @post_actives = @customer.post_actives
+    @post_actives = @customer.post_actives.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def edit
