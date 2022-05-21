@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2022_05_17_123203) do
   end
 
   create_table "communities", force: :cascade do |t|
-    t.string "community_name", null: false
+    t.string "community_name, null: false
     t.integer "area_id", null: false
     t.string "address", null: false
     t.string "phone_number"
