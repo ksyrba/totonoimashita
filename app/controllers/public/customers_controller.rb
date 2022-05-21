@@ -5,6 +5,7 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
     @post_actives = @customer.post_actives.page(params[:page]).per(10).order(created_at: :desc)
+    @customer_ranks = Customer.where(id: PostActive.group(:customer_id).order('count(customer_id) desc').pluck(:customer_id))
   end
 
   def edit

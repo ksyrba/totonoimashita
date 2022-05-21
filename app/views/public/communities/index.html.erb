@@ -8,12 +8,12 @@
   </div>
   <div class="row d-flex justify-content-end">
     <div class="search">
-      <%= render 'search', community: @community %>
+      <%= render 'public/communities/search' %>
     </div>
   </div>
   <div class="row">
     <div class="community_index col-12">
-      <%= render 'index', communities: @communities %>
+      <%= render 'public/communities/index', communities: @communities %>
     </div>
   </div>
   <%= paginate @communities %>
