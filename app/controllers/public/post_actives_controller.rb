@@ -11,7 +11,6 @@ class Public::PostActivesController < ApplicationController
       redirect_to community_path(@post_active.community_id)
     else
       @community = Community.find(params[:post_active][:community_id])
-
       @customer_community = CustomerCommunity.find_by(customer_id: current_customer.id, community_id: @community.id)
       @post_actives = PostActive.where(community_id: @community.id).page(params[:page]).per(10).order(created_at: :desc)
       render 'public/communities/show'
@@ -51,7 +50,7 @@ class Public::PostActivesController < ApplicationController
   def destroy
     @post_active = PostActive.find(params[:id])
     @post_active.destroy
-    redirect_to community_path(@post_active.community_id)
+    redirect_to request.referer
   end
 
   private

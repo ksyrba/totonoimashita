@@ -9,8 +9,10 @@
       <%= render 'customer_info', customer: @customer %>
     </div>
     <div class="post_index col-6 offset-1" >
-      <%= render 'public/post_actives/post_index', post_actives: @post_actives %>
-      <%= paginate @post_actives %>
+      <% if @customer.post_actives.exists? %>
+        <%= render 'public/post_actives/post_index', post_actives: @post_actives %>
+        <%= paginate @post_actives %>
+      <% end %>
     </div>
   </div>
 </div>
