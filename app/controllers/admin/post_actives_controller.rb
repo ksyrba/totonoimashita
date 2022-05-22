@@ -1,4 +1,4 @@
-class Admin::PostsActivesController < ApplicationController
+class Admin::PostActivesController < ApplicationController
   def show
   end
 
