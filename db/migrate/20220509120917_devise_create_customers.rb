@@ -13,6 +13,16 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
 
       ## Rememberable
       t.datetime :remember_created_at
+      t.integer :sex
+      t.date :birthdate
+      t.integer :area_id
+      t.text :introduction
+      t.boolean :is_deleted, default: false, null: false
+      # add_column :customers, :sex, :integer
+      # add_column :customers, :birthdate, :date
+      # add_column :customers, :residence, :inteder
+      # add_column :customers, :introduction, :text
+      # add_column :customers, :is_deleted, :boolean, default: false, null: false
 
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false
@@ -31,7 +41,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
-      
+
       t.string :name, null: false
 
       t.timestamps null: false
