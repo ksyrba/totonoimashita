@@ -1,22 +1,25 @@
 <div class="container">
   <div class="row">
-    <div class="text-error">
+    <div id="comments-error" class="text-error">
       <%= render 'layouts/errors', obj: @comment %>
     </div>
+  </div>
+  <div class="row">
     <div class="title">
-      <h3><%= @community.community_name %></h3>
-      <span>（<%= @community.area.name %>）</span>
+      <h3><%= @post_active.community.community_name %></h3>
+      <span>（<%= @post_active.community.area.name %>）</span>
     </div>
     <div class="row">
       <div class="community_detail col-12">
-        <%= render 'public/communities/topbar', community: @community %>
+        <%= render 'public/communities/topbar', community: @post_active.community %>
       </div>
       <div class="participant col-3">
         <%= render 'public/communities/sidebar', customers: @customers %>
-        <%= link_to "<<戻る" ,community_path(@community) %>
+        <%= paginate @customers %>
+        <%= link_to "<<戻る" ,community_path(@post_active.community) %>
       </div>
       <div class="post_show col-6">
-        <h5><u>投稿詳細</u></h5>
+        <h4><u>投稿詳細</u></h4>
         <div class="cards d-flex justify-content-center mb-3">
           <div class="card_post">
             <div class="row card_customer_name">
@@ -62,18 +65,8 @@
                   <% end %>
                   </div>
                 </div>
-                <p class="mr-3">
-                  <% if @post_active.favorited_by?(current_customer) %>
-                    <%= link_to post_active_favorites_path(@post_active), method: :delete, class: "heart_red" do %>
-                      ♥
-                    <% end %>
-                    <%= @post_active.favorites.count %> いいね
-                  <% else %>
-                    <%= link_to post_active_favorites_path(@post_active), method: :post do %>
-                      ♡
-                    <% end %>
-                    <%= @post_active.favorites.count %> いいね
-                  <% end %>
+                <p id="favorite_buttons_<%= @post_active.id %>" class="mr-3">
+                  <%= render 'public/favorites/favorite', post_active: @post_active %>
                 </p>
                 <p><i class="fa fas fa-comments"></i> <%= @post_active.comments.count %> コメント</p>
               </div>
@@ -81,39 +74,16 @@
           </div>
         </div>
         <% if @post_active.comments.exists? %>
-          <div class="comment_index">
-          <h5 class="mt-2"><u>コメント一覧</u></h5>
-            <% @comments.each do |comment| %>
-              <div class="cards d-flex justify-content-center">
-                <div class="card_comment">
-                  <div class="row card_comment_name">
-                    <%= link_to customer_path(@post_active.customer_id), class: "customer_name" do %>
-                      <p><%= image_tag @post_active.customer.get_image, size: "25x25" %></p>
-                      <h6><%= @post_active.customer.name %></h6>
-                    <% end %>
-                  </div>
-                  <div class="comment_body">
-                    <p><%= comment.comment %></p>
-                  </div>
-                  <div class="delete_button">
-                    <% if @post_active.customer_id == current_customer.id %>
-                      <%= link_to '削除する', post_active_comment_path(comment.post_active,comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn-sm btn-danger" %>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-            <% end %>
+          <div id="comments_area" class="comment_index">
+            <h4 class="mt-2"><u>コメント一覧</u></h4>
+            <%= render 'public/comments/comment_index', comments: @comments %>
           </div>
+          <%= paginate @comments %>
         <% end %>
       </div>
-      <div class="post_form col-3">
-        <h5><u>コメントの投稿</u></h5>
-        <%= form_with model: [@post_active, @comment] do |f| %>
-          <div class="form-group col-12">
-            <%= f.text_area :comment, placeholder: "コメントをここに", class: 'form-control', rows: '5' %>
-            <%= f.submit "送信する", class: 'btn btn-success mt-2' %>
-          </div>
-        <% end %>
+      <div id="comments_area" class="post_comment_form col-3">
+        <h4><u>コメントの投稿</u></h4>
+        <%= render 'public/comments/form', post_active: @post_active, comment: @comment %>
       </div>
     </div>
   </div>

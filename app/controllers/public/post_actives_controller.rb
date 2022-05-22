@@ -1,6 +1,6 @@
 class Public::PostActivesController < ApplicationController
   before_action :authenticate_customer!
-  before_action :ensure_correct_post_active, only: [:edit, :update]
+  before_action :ensure_correct_post_active, only: [:edit, :update, :de]
   protect_from_forgery
 
   def create
@@ -11,19 +11,18 @@ class Public::PostActivesController < ApplicationController
       redirect_to community_path(@post_active.community_id)
     else
       @community = Community.find(params[:post_active][:community_id])
-      @customers = @community.customers
+      @customers = @community.customers.page(params[:page]).per(20)
       @customer_community = CustomerCommunity.find_by(customer_id: current_customer.id, community_id: @community.id)
-      @post_actives = PostActive.where(community_id: @community.id).page(params[:page]).order(created_at: :desc)
+      @post_actives = PostActive.where(community_id: @community.id).page(params[:page]).per(10).order(created_at: :desc)
       render 'public/communities/show'
     end
   end
 
   def show
     @post_active = PostActive.find(params[:id])
-    @community = @post_active.community
-    @customers = @post_active.community.customers
+    @customers = @post_active.community.customers.page(params[:page]).per(20)
     @comment = Comment.new
-    @comments = @post_active.comments
+    @comments = @post_active.comments.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def edit
@@ -52,7 +51,7 @@ class Public::PostActivesController < ApplicationController
   def destroy
     @post_active = PostActive.find(params[:id])
     @post_active.destroy
-    redirect_to community_path(@post_active.community_id)
+    redirect_to request.referer
   end
 
   private

@@ -1,5 +1,5 @@
 <div class="customer_profile">
-  <h5><u>ユーザープロフィール</u></h5>
+  <h4><u>ユーザープロフィール</u></h4>
   <div class="profile_image">
     <%= image_tag customer.get_image, size: "80x80" %>
   </div>
@@ -27,21 +27,21 @@
       </tr>
     </tbody>
   </table>
-  <% if customer.id == current_customer.id %>
+  <% if (customer.id == current_customer.id) && (customer.name != "ゲストユーザー")  %>
     <%= link_to 'ユーザー情報を編集する', edit_customer_path(current_customer), class: "btn btn-success ml-3" %>
   <% end %>
 </div>
 <div class="active_record mt-3">
-<h5><u>サ活回数</u></h5>
+  <h4><u>サ活回数</u></h4>
   <table class="table align-middle">
     <tbody>
       <tr>
         <td width="40%">直近１ヶ月</td>
-        <td width="60%"><%= customer.post_actives.created_this_month.count %> 回</td>
+        <td width="60%"><%= customer.post_actives.visited_this_month.count %> 回</td>
       </tr>
       <tr>
         <td>直近１年間</td>
-        <td><%= customer.post_actives.created_this_year.count %> 回</td>
+        <td><%= customer.post_actives.visited_this_year.count %> 回</td>
       </tr>
       <tr>
         <td>トータル</td>
@@ -49,16 +49,16 @@
       </tr>
     </tbody>
   </table>
-  <h5><u>その他サ活記録</u></h5>
+  <h4><u>その他サ活記録</u></h4>
   <table class="table align-middle">
     <tbody>
       <tr>
         <td width="40%">総セット数</td>
-        <td width="60%"><%= customer.total_set_number %>回</td>
+        <td width="60%"><%= customer.total_set_number %> 回</td>
       </tr>
       <tr>
         <td>総時間</td>
-        <td><%= customer.all_total_time %>時間</td>
+        <td><%= customer.all_total_time %> 時間</td>
       </tr>
     </tbody>
   </table>

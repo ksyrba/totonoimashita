@@ -1,5 +1,5 @@
 class Public::CommunitiesController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_customer!, except: [:index]
   before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
 
   def new
@@ -19,7 +19,7 @@ class Public::CommunitiesController < ApplicationController
   end
 
   def index
-    @communities = Community.page(params[:page]).order(created_at: :desc)
+    @communities = Community.page(params[:page]).per(20).order(created_at: :desc)
   end
 
   def join
@@ -30,10 +30,10 @@ class Public::CommunitiesController < ApplicationController
 
   def show
     @community = Community.find(params[:id])
-    @customers = @community.customers
+    @customers = @community.customers.page(params[:page]).per(20)
     @customer_community = CustomerCommunity.find_by(customer_id: current_customer.id, community_id: params[:id])
     @post_active = PostActive.new
-    @post_actives = PostActive.where(community_id: @community.id).page(params[:page]).order(created_at: :desc)
+    @post_actives = PostActive.where(community_id: @community.id).page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def edit

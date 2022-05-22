@@ -13,12 +13,20 @@ class Customer < ApplicationRecord
   has_one_attached :image
 
   validates :name, length: { minimum: 2, maximum: 20 }
+  validates :birthdate, :area_id, presence: true
   validates :introduction, length: {maximum: 50 }
 
   enum sex: { man: 1, woman: 2 }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :area
+  
+  def self.guest
+    find_or_create_by!(name: 'ゲストユーザー' ,email: 'guest@example.com', birthdate: '2000-01-01') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
 
   def get_image
     if image.attached?
@@ -27,11 +35,11 @@ class Customer < ApplicationRecord
       'no_image_user.jpeg'
     end
   end
-  
+
   def age
     (Date.today.strftime('%Y%m%d').to_i - birthdate.strftime('%Y%m%d').to_i) / 10000
   end
-  
+
   def total_set_number
     post_actives.sum(:set_number)
   end

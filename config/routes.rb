@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
   
+  devise_scope :customer do
+    post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+  
   scope module: :public do
     root :to =>'homes#top'
     resources :customers, only:[:show, :edit, :update]
@@ -19,6 +23,8 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
     get "searches/search_community"=>'searches#search_community'
+    get "searches/search_area"=>'searches#search_area'
+    
   end
 
 # 管理者

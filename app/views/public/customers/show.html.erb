@@ -9,7 +9,13 @@
       <%= render 'customer_info', customer: @customer %>
     </div>
     <div class="post_index col-6 offset-1" >
+      <% if @customer.post_actives.exists? %>
       <%= render 'public/post_actives/post_index', post_actives: @post_actives %>
+      <% else %>
+        <h4><u>投稿一覧</u></h4>
+        <p>投稿はありません</p>
+      <% end %>
+      <%= paginate @post_actives %>
     </div>
   </div>
 </div>

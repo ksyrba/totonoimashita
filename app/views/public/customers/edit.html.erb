@@ -3,17 +3,19 @@
     <div class="text-error">
       <%= render 'layouts/errors', obj: @customer %>
     </div>
+  </div>
+  <div class="row">
     <div class="title">
       <h3><%= @customer.name %>さんのサ活情報</h3>
     </div>
    </div>
   <div class="row">
-    <div class="customer_detail col-3">
+    <div class="customer_detail col-4">
       <%= render 'customer_info', customer: @customer %>
     </div>
     <div class="post_form_edit col-5 offset-2">
       <h5><u>ユーザー情報の編集</u></h5>
-      <%= form_with model: @customer, url: customer_path, method: :patch, local: true do |f| %>
+      <%= form_with model:@customer, url: customer_path, method: :patch, local: true do |f| %>
         <div class="form-group col-6 pt-2">
           <%= f.label :"ユーザーの画像" %></br>
           <%= f.file_field :image, accept: "image/*" %>
@@ -22,62 +24,15 @@
           <%= f.label :"ユーザー名" %>
           <%= f.text_field :name, class: 'form-control' %>
         </div>
-        <div class="form-group col-2 pt-2">
+        <div class="form-group col-2">
           <%= f.label :"性別" %>
           <%= f.radio_button :sex, "man" %>男 <%= f.radio_button :sex, "woman" %>女
-        </div>
-        <div class="form-group col-6 pt-2">
-          <%= f.label :"生年月日" %>
-          <%= f.date_field :birthdate, class: 'form-control' %>
-        </div>
-        <div class="form-group col-4 pt-2">
-          <%= f.label :"居住地" %>
-          <%= f.collection_select(:area_id, Area.all, :id, :name, {}, {class:"area-select"}) %>
-        </div>
-        <div class="form-group col-12">
-          <%= f.label :"自己紹介" %>
-          <%= f.text_area :introduction, class: 'form-control', rows: '3' %>
-        </div>
-        <div class="form-group pt-2">
-          <%= f.submit "ユーザー情報を更新する" ,class: 'btn btn-success ml-4' %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
- <div class="container">
-  <div class="row">
-    <div class="text-error">
-      <%= render 'layouts/errors', obj: @customer %>
-    </div>
-    <div class="title">
-      <h3><%= @customer.name %>さんのサ活情報</h3>
-    </div>
-   </div>
-  <div class="row">
-    <div class="customer_detail col-3">
-      <%= render 'customer_info', customer: @customer %>
-    </div>
-    <div class="post_form col-5 offset-2">
-      <h5><u>ユーザー情報の編集</u></h5>
-      <%= form_with model: @customer, url: customer_path, method: :patch, local: true do |f| %>
-        <div class="form-group col-6 pt-2">
-          <%= f.label :"ユーザーの画像" %></br>
-          <%= f.file_field :image, accept: "image/*" %>
         </div>
         <div class="form-group col-6">
-          <%= f.label :"ユーザー名" %>
-          <%= f.text_field :name, class: 'form-control' %>
-        </div>
-        <div class="form-group col-2 pt-2">
-          <%= f.label :"性別" %>
-          <%= f.radio_button :sex, "man" %>男 <%= f.radio_button :sex, "woman" %>女
-        </div>
-        <div class="form-group col-6 pt-2">
           <%= f.label :"生年月日" %>
           <%= f.date_field :birthdate, class: 'form-control' %>
         </div>
-        <div class="form-group col-4 pt-2">
+        <div class="form-group col-4">
           <%= f.label :"居住地" %>
           <%= f.collection_select(:area_id, Area.all, :id, :name, {}, {class:"area-select"}) %>
         </div>

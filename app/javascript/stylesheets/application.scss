@@ -7,6 +7,13 @@
   box-sizing: border-box;
 }
 
+#notice {
+  text-align: center;
+  background-color: #00FF00;
+  font-weight: bold;
+  font-size: 20px;
+}
+
 .header {
 position: fixed;
 top: 0;
@@ -16,7 +23,7 @@ height: 150px;
 z-index: 100;
 }
 
-body {
+main {
   padding-top: 130px;
 }
 
@@ -41,6 +48,22 @@ p.footertopline{
 
 .footer_icon {
   margin-left: 10px;
+}
+
+.log_in {
+  border: solid 3px #000000;
+  border-radius: 15px;
+  background-color: #EEEEEE;
+  padding: 10px;
+  height: 310px;
+}
+
+.sign_up {
+  border: solid 3px #000000;
+  border-radius: 15px;
+  background-color: #EEEEEE;
+  padding: 10px;
+  height: 690px;
 }
 
 .image_top {
@@ -92,6 +115,15 @@ p.footertopline{
   right: 5px;
 }
 
+.community_form {
+  border: solid 3px #000000;
+  border-radius: 15px;
+  background-color: #EEEEEE;
+  margin-top: 10px;
+  padding: 15px;
+  height: auto;
+}
+
 .title > h3 {
   display: inline-block;
   background: linear-gradient(transparent 80%, #ff0000 50%);
@@ -99,6 +131,10 @@ p.footertopline{
 
 .title {
   position: relative;
+}
+
+.title > span {
+  font-size: 20px;
 }
 
 .bottun_new {
@@ -113,6 +149,19 @@ p.footertopline{
 
 .search_bar {
   margin-right: 30px;
+}
+
+.search_button {
+  height: 30px;
+  width: 30px;
+  border-radius: 10%;
+  color: #ffffff;
+  background-color: #000000;
+  text-decoration:none;
+}
+
+.area-select {
+  height: 30px;
 }
 
 .card_community {
@@ -165,6 +214,7 @@ p.footertopline{
 
 .topbar_right {
   position: absolute;
+  top: 50px;
   right: 0px;
   margin-left: 10px;
 }
@@ -173,6 +223,7 @@ p.footertopline{
 .post_form {
   border: solid 3px #000000;
   border-radius: 15px;
+  background-color: #EEEEEE;
   margin-top: 10px;
   padding: 10px;
   height: 650px;
@@ -222,10 +273,6 @@ p.footertopline{
   display: flex;
 }
 
-.heart_red {
-  color:#e54747 !important;
-}
-
 .comment_index {
   border-top: dashed 3px #000000;
 }
@@ -236,21 +283,53 @@ p.footertopline{
   right: 5px;
 }
 
+.post_comment_form {
+  border: solid 3px #000000;
+  border-radius: 15px;
+  background-color: #EEEEEE;
+  margin-top: 10px;
+  padding: 10px;
+  height: 250px;
+}
+
 .profile_image {
   text-align: center;
 }
 
 .customer_profile {
   border: solid 3px #000000;
+  background-color: #FFFFCC;
   border-radius: 15px;
-  padding: 5px;
+  padding: 10px;
+}
+
+.active_record {
+  border: solid 3px #000000;
+  border-radius: 15px;
+  background-color: #FFDDFF;
+  padding: 10px;
+  height: 360px;
 }
 
 .post_form_edit {
   border: solid 3px #000000;
   border-radius: 15px;
-  margin-top: 10px;
+  background-color: #EEEEEE;
   padding: 10px;
-  height: 0px;
+  height: 700px;
 }
 
+
+.pagination>li>a {          
+  border: none; 
+  color: #696969; 
+}
+
+.pagination>.active>a {     
+  background: #93c9ff;
+  border-radius: 15px;
+}
+
+.pagination>li>a:hover {        
+  border-radius: 15px;
+}
