@@ -1,0 +1,63 @@
+<h4><u>投稿一覧</u></h4>
+<% post_actives.each do |post_active| %>
+  <div class="cards d-flex justify-content-center">
+    <div class="card_post">
+      <div class="row card_customer_name">
+        <%= link_to customer_path(post_active.customer_id), class: "customer_name" do %>
+          <p><%= image_tag post_active.customer.get_image, size: "30x30" %></p>
+          <h5><%= post_active.customer.name %></h5>
+        <% end %>
+        <p class="post_time">
+          投稿日：<%= post_active.created_at.strftime('%Y/%m/%d %R') %>
+        </p>
+      </div>
+      <%= link_to post_active_path(post_active) do %>
+      <div class="card_post_detail">
+        <table class="table table-sm align-middle col-12">
+          <tbody>
+            <tr>
+              <td width="25%"><i class="fa fas fa-calendar-alt"></i> サ活日</td>
+              <td width="75%"><%= post_active.visit_date.strftime('%Y/%m/%d') %></td>
+            </tr>
+            <tr>
+              <td width="25%"><i class="fa fas fa-sort-amount-up"></i> セット数</td>
+              <td width="75%"><%= post_active.set_number %>回</td>
+            </tr>
+            <tr>
+              <td width="25%"><i class="fa fas fa-clock"></i> 総時間</td>
+              <td width="75%"><%= post_active.total_time %>時間</td>
+            </tr>
+            <tr>
+              <td width="25%"><i class="fa fas fa-user-edit"></i> 感想など</td>
+              <td width="75%"><%= post_active.impression %></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="card_post_under">
+          <div class="card_post_button">
+            <div class="edit_button mr-3">
+            <% if post_active.customer_id == current_customer.id %>
+              <%= link_to '編集する', edit_post_active_path(post_active), class: "btn-sm btn-success" %>
+            <% end %>
+            </div>
+            <div class="delete_button">
+            <% if post_active.customer_id == current_customer.id %>
+              <%= link_to '削除する', post_active_path(post_active), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn-sm btn-danger" %>
+            <% end %>
+            </div>
+          </div>
+          <p id="favorite_buttons_<%= post_active.id %>" class="mr-3">
+            <%= render 'public/favorites/favorite', post_active: post_active %>
+          </p>
+          <p>
+            <%= link_to post_active_path(post_active) do %>
+              <i class="fa fas fa-comments"></i> 
+            <% end %>
+            <%= post_active.comments.count %> コメント
+          </p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

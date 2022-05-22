@@ -1,0 +1,19 @@
+<table class="table table-bordered table-hover mt-3">
+  <thead>
+    <tr>
+      <th class="table-secondary">参加者一覧</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% customers.each do |customer| %>
+      </tr>
+        <td>
+          <%= link_to customer_path(customer) do %>
+            <%= image_tag customer.get_image, size: "30x30" %>
+            <%= customer.name %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

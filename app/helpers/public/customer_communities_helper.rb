@@ -1,0 +1,2 @@
+module Public::CustomerCommunitiesHelper
+end

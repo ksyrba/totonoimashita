@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row title">
+    <h3>参加しているコミュニティ</h3>
+    <span>（全<%= @communities.count %>件）</span>
+    <div class="bottun_new">
+      <%= link_to 'コミュニティを新規作成する', new_community_path, class: "btn btn-success" %>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-end">
+    <div class="search">
+      <%= render 'public/communities/search' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="community_index col-12">
+      <%= render 'public/communities/index', communities: @communities %>
+    </div>
+  </div>
+  <%= paginate @communities %>
+</div>

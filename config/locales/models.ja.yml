@@ -1,0 +1,38 @@
+ja:
+  activerecord:
+    attributes:
+      customer:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: 次回から自動的にログイン
+        name: ユーザー名
+        sex: 性別
+        birthdate: 生年月日
+        area_id: 居住地
+        introduction: 自己紹介
+        is_deleted: 退会フラグ
+      admin:
+        email: メールアドレス
+        password: パスワード
+      community:
+        community_name: コミュニティ名
+        aera_id: 所在地
+        address: 住所
+        phone_number: 電話番号
+        description: 説明
+        owner_id: 作成者ID
+      post_active:
+        visit_date: 訪問日
+        set_number: セット数
+        total_time: 総時間
+        impression: 感想など
+      comment:
+        comment: コメント
+
+    models:
+      customer: 会員
+      admin: 管理者
+      community: コミュニティ
+      post_active: 投稿
+      comment: コメント

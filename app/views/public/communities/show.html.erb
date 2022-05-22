@@ -1,0 +1,87 @@
+<% if @customer_community.present? %>
+  <div class="container">
+    <div class="row">
+      <div class="text-error">
+        <%= render 'layouts/errors', obj: @post_active %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="title">
+        <h3><%= @community.community_name %></h3>
+        <span>（<%= @community.area.name %>）</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="community_detail col-12">
+        <%= render 'public/communities/topbar', community: @community %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="participant col-3">
+        <%= render 'public/communities/sidebar', customers: @customers %>
+        <%= paginate @customers %>
+      </div>
+      <div class="post_index col-6 mt-2">
+        <% if @community.post_actives.exists? %>
+          <%= render 'public/post_actives/post_index', post_actives: @post_actives %>
+        <% else %>
+          <h4><u>投稿一覧</u></h4>
+          <p>投稿はありません</p>
+        <% end %>
+        <%= paginate @post_actives %>
+      </div>
+      <div class="post_form col-3">
+        <h4><u>サ活情報の投稿</u></h4>
+        <%= form_with model: @post_active, url: post_actives_path, method: :post, local: true do |f| %>
+          <div class="form-group col-8">
+            <%= f.label :"日付" %>
+            <%= f.date_field :visit_date, class: 'form-control' %>
+          </div>
+          <div class="form-group col-6 pt-2">
+            <%= f.label :"セット数" %>
+            <%= f.number_field :set_number, class: 'form-control', min: 0, max: 10 %>
+          </div>
+          <div class="form-group col-4 pt-2">
+            <%= f.label :"総時間" %>
+            <%= f.select :total_time,
+              [ ["15分", 0.25], ["30分", 0.5], ["45分", 0.75] ,["1時間", 1], ["1時間15分", 1.25], ["1時間30分", 1.5], ["1時間45分", 1.75], ["2時間", 2], ["2時間15分", 2.25], ["2時間30分", 2.5], ["2時間45分", 2.75], ["3時間", 3] ],
+              prompt: "時間を選択してください", class: 'form-control' %>
+          </div>
+          <div class="form-group col-12 pt-2">
+            <%= f.label :"感想など" %>
+            <%= f.text_area :impression, placeholder: "自由にご記載ください", class: 'form-control', rows: '4' %>
+          </div>
+          <p class="complement">※セット数：サウナ→水風呂→外気浴を1セットとして何セット行ったか︎︎</p>
+          <p class="complement">※総時間：サウナ・水風呂・外気浴の合計時間</p>
+          <div class="form-group pt-2">
+            <%= f.hidden_field :community_id, :value => @community.id %>
+            <%= f.submit "投稿する" ,class: 'btn btn-success ml-4' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+<% else %>
+    <div class="row justify-content-center">
+      <div class="title">
+        <h3><%= @community.community_name %></h3>
+        <span>（<%= @community.area.name %>）</span>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="join">
+        <b class="join_text">
+          このコミュニティに参加するには</br>
+          下記の参加するボタンを押してください。
+        </b>
+        <div class="join_button">
+          <%= link_to '参加する', community_join_path(@community), class: "btn btn-bg btn-success" %>
+        </div>
+        <div class="return_button">
+          <%= link_to '<<戻る', registration_communities_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
