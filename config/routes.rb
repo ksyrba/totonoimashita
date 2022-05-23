@@ -45,6 +45,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
     get "searches/search_community"=>'searches#search_community'
+    
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
