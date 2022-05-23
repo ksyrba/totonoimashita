@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row title">
+    <h3>コミュニティ一覧</h3>
+    <span>（全<%= @search_result.count %>件 / 検索結果「<%= @word %>」）</span>
+    <div class="bottun_new">
+      <%= link_to 'コミュニティを新規作成する', new_community_path, class: "btn btn-success" %>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-end">
+    <div class="search">
+      <%= render 'admin/communities/search' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="community_index col-12">
+      <%= render 'admin/communities/index', communities: @search_result %>
+    </div>
+  </div>
+  <%= paginate @communities %>
+</div>

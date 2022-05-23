@@ -31,10 +31,16 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
+  
+  devise_scope :admin do
+    post 'admin/guest_sign_in', to: 'admin/sessions#guest_sign_in'
+  end
 
   namespace :admin do
     root :to =>'homes#top'
-    resources :customers, only:[:show, :edit, :update]
+    resources :customers, only:[:index, :show, :edit, :update] do
+      patch 'unsubscribe' => 'customers#unsubscribe'
+    end
     resources :communities do
       resources :customer_community, only:[:create]
       get "join" => "communities#join"
@@ -45,7 +51,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
     get "searches/search_community"=>'searches#search_community'
-    
+    get "searches/search_area"=>'searches#search_area'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
