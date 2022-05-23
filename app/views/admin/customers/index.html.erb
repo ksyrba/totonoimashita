@@ -26,9 +26,11 @@
             </td>
             <td><%= customer.sex_i18n %></td>
             <td><%= customer.area.name %></td>
-            <td><%= customer.is_deleted %></td>
-            <td> 
-              <%= link_to '退会させる', admin_customer_unsubscribe_path(customer), "data-confirm" => "本当に退会させてもよろしいですか？", class: "btn btn-sm btn-danger" %>
+            <td><%= customer.is_deleted_i18n %></td>
+            <td>
+              <% if customer.is_deleted == "有効" %>
+                <%= link_to '退会させる', unsubscribe_admin_customer_path(customer), method: :patch, "data-confirm" => "本当に退会させてもよろしいですか？", class: "btn btn-sm btn-danger" %>
+              <% end %>
             </td>
           </tr>
           <% end %>
