@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       resources :customer_community, only:[:create]
       get "join" => "communities#join"
     end
-    resources :registration_communities, only:[:index, :destroy]
+    resources :registration_communities, only:[:index]
     resources :post_actives, only:[:create, :show, :edit, :update, :destroy] do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
@@ -34,17 +34,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root :to =>'homes#top'
-    resources :customers, only:[:index, :show, :edit, :update] do
+    resources :customers, only:[:index, :show] do
       patch :unsubscribe, on: :member
     end
-    resources :communities do
-      resources :customer_community, only:[:create]
-      get "join" => "communities#join"
-    end
+    resources :communities
     resources :registration_communities, only:[:index, :destroy]
-    resources :post_actives, only:[:create, :show, :edit, :update, :destroy] do
-      resources :comments, only: [:create, :destroy]
-      resource :favorites, only: [:create, :destroy]
+    resources :post_actives, only:[:create, :show, :destroy] do
+      resources :comments, only: [:create]
     end
     get "searches/search_community"=>'searches#search_community'
     get "searches/search_area"=>'searches#search_area'
