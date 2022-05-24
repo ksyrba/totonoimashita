@@ -11,13 +11,7 @@
   </head>
 
   <body>
-    <% if customer_signed_in? %>
-      <%= render 'layouts/public/header' %>
-    <% elsif admin_signed_in? %>
-      <%= render 'layouts/admin/header' %>
-    <% else %>
-      <%= render 'layouts/first_header' %>
-    <% end %>
+    <%= render 'layouts/public/header' %>
     <main>
       <p id="notice"><%= notice %></p>
       <%= yield %>

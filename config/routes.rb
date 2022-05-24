@@ -32,10 +32,6 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-  devise_scope :admin do
-    post 'admin/guest_sign_in', to: 'admin/sessions#guest_sign_in'
-  end
-
   namespace :admin do
     root :to =>'homes#top'
     resources :customers, only:[:index, :show, :edit, :update] do
