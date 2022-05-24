@@ -20,7 +20,7 @@
       <td><%= community.customers.count %>人</td>
       <td><%= community.post_actives.count %>個</td>
       <td><%= link_to '編集する', edit_admin_community_path(community), class: "btn btn-sm btn-success" %></td>
-      <td><%= link_to '削除する', community_path(community), method: :delete, "data-confirm" => "本当に削除してもよろしいですか？", class: "btn btn-sm btn-danger" %></td>
+      <td><%= link_to '削除する', admin_community_path(community), method: :delete, "data-confirm" => "本当に削除してもよろしいですか？", class: "btn btn-sm btn-danger" %></td>
     </tr>
     <% end %>
   </tbody>
