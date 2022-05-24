@@ -55,7 +55,6 @@ class Public::CommunitiesController < ApplicationController
     redirect_to communities_path
   end
 
-
   private
 
   def community_params
