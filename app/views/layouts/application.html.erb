@@ -12,12 +12,10 @@
   </head>
 
   <body>
-    <% if customer_signed_in? %>
-      <%= render 'layouts/public/header' %>
-    <% elsif admin_signed_in? %>
-      <%= render 'layouts/admin/header' %>
+    <% if @current_path == "/admin" %>
+      <%= render 'layouts/admin_header' %>
     <% else %>
-      <%= render 'layouts/first_header' %>
+      <%= render 'layouts/public_header' %>
     <% end %>
     <main>
       <p id="notice"><%= notice %></p>

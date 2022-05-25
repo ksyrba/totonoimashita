@@ -1,58 +1,67 @@
 <div class="community_image col-3">
   <%= image_tag community.get_image, size: "280x250" %>
 </div>
-<div class="community_info col-6 ml-3">
+<div class="community_info col-5 ml-3">
   <table class="table align-middle">
     <tbody>
       <tr>
-        <td width="25%"><i class="fa fa-solid fa-user"></i> 参加者数</td>
-        <td width="75%"><%= community.customers.count %></td>
+        <td width="30%"><i class="fa fa-solid fa-user"></i> 参加者数</td>
+        <td width="70%"><%= community.customers.count %></td>
       </tr>
       <tr>
-        <td width="25%"><i class="fa fa-solid fa-paste"></i> 投稿数</td>
-        <td width="75%"><%= community.post_actives.count %></td>
+        <td><i class="fa fa-solid fa-paste"></i> 投稿数</td>
+        <td><%= community.post_actives.count %></td>
       </tr>
       <tr>
-        <td width="25%"><i class="fa fas fa-map-marked-alt"></i> 住所</td>
-        <td width="75%"><%= community.address %></td>
+        <td><i class="fa fas fa-map-marked-alt"></i> 住所</td>
+        <td><%= community.address %></td>
       </tr>
       <tr>
-        <td width="25%"><i class="fa fas fa-phone"></i> 電話番号</td>
-        <td width="75%"><%= community.phone_number %></td>
+        <td><i class="fa fas fa-phone"></i> 電話番号</td>
+        <td><%= community.phone_number %></td>
       </tr>
       <tr>
-        <td width="25%"><i class="fa fa-solid fa-audio-description"></i> 説明</td>
-        <td width="75%"><%= community.description %></td>
+        <td><i class="fa fa-solid fa-audio-description"></i> 説明</td>
+        <td><%= community.description %></td>
       </tr>
     </tbody>
   </table>
- <input id="address" type="textbox" value="GeekSalon">
-<input type="button" value="検索" onclick="codeAddress()">
-
+  </div>
+  <div class="topbar_right col-4">
 <div id='map'></div>
 <style>
 #map {
-  height: 300px;
-  width: 600px;
+  height: 85%;
+  width: 100%;
 }
 </style>
 <script>
-    function initMap(){
-      let map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: <%= community.latitude %>, lng: <%= community.longitude %> },
-      zoom: 15
+  let map
+
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+  map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: <%= community.latitude %>, lng: <%= community.longitude %>},
+      zoom: 15,
+  });
+    (function(){
+    var contentString = "住所：<%= community.address %>";
+      var marker = new google.maps.Marker({
+          position:{lat: <%= community.latitude %>, lng: <%= community.longitude %>},
+          map: map,
+          title: contentString
       });
-    }
-  </script>
-</div>
-<div class="topbar_right col-3">
-  <%= image_tag('sauna6.png', size: '200x120') %>
-  <div class="edit_button mt-3">
-  <% if community.owner_id == current_customer.id %>
-    <%= link_to 'コミュニティを編集する', edit_community_path(community), class: "btn btn-bg btn-success" %>
-  <% end %>
-  </div>
-  <div class="exit_button mt-3">
-    <%= link_to 'コミュニティを退会する', community_path(community), method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn btn-bg btn-danger" %>
+    })();
+  }
+</script>
+  <div class="community_button">
+    <div class="edit_button">
+    <% if community.owner_id == current_customer.id %>
+      <%= link_to 'コミュニティの編集', edit_community_path(community), class: "btn btn-sm btn-success" %>
+    <% end %>
+    </div>
+    <div class="exit_button ml-3">
+      <%= link_to 'コミュニティの退会', community_path(community), method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn btn-sm btn-danger" %>
+    </div>
   </div>
 </div>

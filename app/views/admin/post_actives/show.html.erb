@@ -11,7 +11,7 @@
       <div class="participant col-3">
         <%= render 'public/communities/sidebar', customers: @customers %>
         <%= paginate @customers %>
-        <%= link_to "<<戻る" ,community_path(@post_active.community) %>
+        <%= link_to "<<戻る" ,admicommunity_path(@post_active.community) %>
       </div>
       <div class="post_show col-6">
         <h4><u>投稿詳細</u></h4>

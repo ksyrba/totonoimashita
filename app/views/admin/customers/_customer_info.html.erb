@@ -32,7 +32,7 @@
     </tbody>
   </table>
   <div class="unsubscribe_button ml-2">
-    <% if customer.is_deleted == "有効" %>
+    <% if (customer.is_deleted == "有効") && (customer.name != "ゲストユーザー")  %>
       <%= link_to '退会させる', unsubscribe_admin_customer_path(customer), method: :patch, "data-confirm" => "本当に退会させてもよろしいですか？", class: "btn btn-danger" %>
     <% end %>
   </div>
