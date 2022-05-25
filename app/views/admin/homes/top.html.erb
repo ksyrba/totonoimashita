@@ -1,2 +1,24 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <div class="title">
+        <h3>管理者用画面</h3>
+      </div>
+      <div class="image_top">
+        <div class="image_content">
+          <div class="image_message">
+            <h3>サウナーのためのコミュニティサイト！</h3>
+          </div>
+          <div class= 'image_logo'>
+          　<%= image_tag('sauna4.png', size: '600x150') %>
+        　</div>
+        </div>
+      </div>
+      <div class="btn-wrapper col-8 mx-auto">
+        <div class="row">
+          <%= link_to 'ログイン',new_admin_session_path, class: "btn btn-info btn-block mt-3" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

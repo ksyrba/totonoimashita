@@ -14,7 +14,7 @@
       <%= render 'customer_info', customer: @customer %>
     </div>
     <div class="post_form_edit col-5 offset-2">
-      <h5><u>ユーザー情報の編集</u></h5>
+      <h4><u>ユーザー情報の編集</u></h4>
       <%= form_with model:@customer, url: customer_path, method: :patch, local: true do |f| %>
         <div class="form-group col-6 pt-2">
           <%= f.label :"ユーザーの画像" %></br>

@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row">
+    <div class="title">
+      <h3><%= @post_active.community.community_name %></h3>
+      <span>（<%= @post_active.community.area.name %>）</span>
+    </div>
+    <div class="row">
+      <div class="community_detail col-12">
+        <%= render 'admin/communities/topbar', community: @post_active.community %>
+      </div>
+      <div class="participant col-3">
+        <%= render 'public/communities/sidebar', customers: @customers %>
+        <%= paginate @customers %>
+        <%= link_to "<<戻る" ,admicommunity_path(@post_active.community) %>
+      </div>
+      <div class="post_show col-6">
+        <h4><u>投稿詳細</u></h4>
+        <div class="cards d-flex justify-content-center mb-3">
+          <div class="card_post">
+            <div class="row card_customer_name">
+              <%= link_to customer_path(@post_active.customer_id), class: "customer_name" do %>
+                <p><%= image_tag @post_active.customer.get_image, size: "30x30" %></p>
+                <h5><%= @post_active.customer.name %></h5>
+              <% end %>
+              <p class="post_time">
+                投稿日：<%= @post_active.created_at.strftime('%Y/%m/%d %R') %>
+              </p>
+            </div>
+            <div class="card_post_detail">
+              <table class="table table-sm align-middle col-12">
+                <tbody>
+                  <tr>
+                    <td width="25%"><i class="fa fas fa-calendar-alt"></i> サ活日</td>
+                    <td width="75%"><%= @post_active.visit_date.strftime('%Y/%m/%d') %></td>
+                  </tr>
+                  <tr>
+                    <td width="25%"><i class="fa fas fa-sort-amount-up"></i> セット数</td>
+                    <td width="75%"><%= @post_active.set_number %>回</td>
+                  </tr>
+                  <tr>
+                    <td width="25%"><i class="fa fas fa-clock"></i> 総時間</td>
+                    <td width="75%"><%= @post_active.total_time %>時間</td>
+                  </tr>
+                  <tr>
+                    <td width="25%"><i class="fa fas fa-user-edit"></i> 感想など</td>
+                    <td width="75%"><%= @post_active.impression %></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="card_post_under">
+                <div class="card_post_button">
+                  <div class="delete_button">
+                    <%= link_to '削除する', admin_post_active_path(@post_active), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn-sm btn-danger" %>
+                  </div>
+                </div>
+                <p class="mr-3">
+                  <i class="fa fas fa-heart" style="color: red;"></i><%= @post_active.favorites.count %> いいね
+                </p>
+                <p><i class="fa fas fa-comments"></i> <%= @post_active.comments.count %> コメント</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% if @post_active.comments.exists? %>
+          <div id="comments_area" class="comment_index">
+            <h4 class="mt-2"><u>コメント一覧</u></h4>
+            <%= render 'public/comments/comment_index', comments: @comments %>
+          </div>
+          <%= paginate @comments %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

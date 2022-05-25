@@ -1,0 +1,38 @@
+<div class="community_image col-3">
+  <%= image_tag community.get_image, size: "280x250" %>
+</div>
+<div class="community_info col-6 ml-3">
+  <table class="table align-middle">
+    <tbody>
+      <tr>
+        <td width="25%"><i class="fa fa-solid fa-user"></i> 参加者数</td>
+        <td width="75%"><%= community.customers.count %></td>
+      </tr>
+      <tr>
+        <td width="25%"><i class="fa fa-solid fa-paste"></i> 投稿数</td>
+        <td width="75%"><%= community.post_actives.count %></td>
+      </tr>
+      <tr>
+        <td width="25%"><i class="fa fas fa-map-marked-alt"></i> 住所</td>
+        <td width="75%"><%= community.address %></td>
+      </tr>
+      <tr>
+        <td width="25%"><i class="fa fas fa-phone"></i> 電話番号</td>
+        <td width="75%"><%= community.phone_number %></td>
+      </tr>
+      <tr>
+        <td width="25%"><i class="fa fa-solid fa-audio-description"></i> 説明</td>
+        <td width="75%"><%= community.description %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="topbar_right col-3">
+  <%= image_tag('sauna6.png', size: '200x120') %>
+  <div class="edit_button mt-3">
+    <%= link_to 'コミュニティを編集する', edit_admin_community_path(community), class: "btn btn-bg btn-success" %>
+  </div>
+  <div class="exit_button mt-3">
+    <%= link_to 'コミュニティを退会する', admin_community_path(community), method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn btn-bg btn-danger" %>
+  </div>
+</div>

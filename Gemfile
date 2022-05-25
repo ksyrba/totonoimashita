@@ -62,6 +62,7 @@ gem 'byebug'
 gem 'active_hash'
 gem 'jquery-rails'
 gem 'dotenv-rails'
+gem 'geocoder'
 
 group :production do
   gem 'mysql2'

@@ -17,14 +17,15 @@ class Customer < ApplicationRecord
   validates :introduction, length: {maximum: 50 }
 
   enum sex: { man: 1, woman: 2 }
+  enum is_deleted: { 有効: false, 退会: true }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :area
-  
+
   def self.guest
-    find_or_create_by!(name: 'ゲストユーザー' ,email: 'guest@example.com', birthdate: '2000-01-01') do |user|
+    find_or_create_by!(name: 'ゲストユーザー' ,email: 'guest@example.com', sex: 1, birthdate: '2000-01-01', area_id: 2) do |user|
       user.password = SecureRandom.urlsafe_base64
-      user.name = "guestuser"
+      user.name = "ゲストユーザー"
     end
   end
 

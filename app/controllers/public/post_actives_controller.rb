@@ -1,6 +1,6 @@
 class Public::PostActivesController < ApplicationController
   before_action :authenticate_customer!
-  before_action :ensure_correct_post_active, only: [:edit, :update, :de]
+  before_action :ensure_correct_post_active, only: [:edit, :update, :destroy]
   protect_from_forgery
 
   def create
@@ -51,7 +51,7 @@ class Public::PostActivesController < ApplicationController
   def destroy
     @post_active = PostActive.find(params[:id])
     @post_active.destroy
-    redirect_to request.referer
+    redirect_to community_path(@post_active.community_id)
   end
 
   private

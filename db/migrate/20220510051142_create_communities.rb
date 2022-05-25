@@ -4,6 +4,8 @@ class CreateCommunities < ActiveRecord::Migration[6.1]
       t.string :community_name, null: false, unique: true
       t.integer :area_id, null: false
       t.string :address, null: false, unique: true
+      t.float :latitude
+      t.float :longitude
       t.string :phone_number, unique: true
       t.text :description
       t.integer :owner_id, null: false
