@@ -23,9 +23,9 @@ class Customer < ApplicationRecord
   belongs_to_active_hash :area
 
   def self.guest
-    find_or_create_by!(name: 'ゲストユーザー' ,email: 'guest@example.com', birthdate: '2000-01-01') do |user|
+    find_or_create_by!(name: 'ゲストユーザー' ,email: 'guest@example.com', sex: 1, birthdate: '2000-01-01', area_id: 2) do |user|
       user.password = SecureRandom.urlsafe_base64
-      user.name = "guestuser"
+      user.name = "ゲストユーザー"
     end
   end
 
