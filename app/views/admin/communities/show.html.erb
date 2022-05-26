@@ -15,7 +15,7 @@
       <%= render 'admin/communities/sidebar', customers: @customers %>
       <%= paginate @customers %>
     </div>
-    <div class="post_index col-6 mt-2">
+    <div class="post_index col-6 offset-1 mt-2">
       <% if @community.post_actives.exists? %>
         <%= render 'admin/post_actives/post_index', post_actives: @post_actives %>
       <% else %>

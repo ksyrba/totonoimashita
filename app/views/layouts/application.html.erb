@@ -13,7 +13,7 @@
 
   <body>
     <div class="contents">
-    <% if request.path == '/admin' %>
+    <% if request.path.include?('/admin') %>
       <%= render 'layouts/admin_header' %>
     <% else %>
       <%= render 'layouts/public_header' %>

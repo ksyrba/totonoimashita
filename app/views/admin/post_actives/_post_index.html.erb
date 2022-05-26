@@ -5,7 +5,7 @@
       <div class="row card_customer_name">
         <%= link_to admin_customer_path(post_active.customer_id), class: "customer_name" do %>
           <p><%= image_tag post_active.customer.get_image, size: "30x30" %></p>
-          <h5><%= post_active.customer.name %></h5>
+          <h5 class="ml-1"><%= post_active.customer.name %></h5>
         <% end %>
         <p class="post_time">
           投稿日：<%= post_active.created_at.strftime('%Y/%m/%d %R') %>
