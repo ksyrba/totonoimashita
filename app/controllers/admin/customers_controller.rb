@@ -13,7 +13,7 @@ class Admin::CustomersController < ApplicationController
 
   def unsubscribe
     @customer = Customer.find(params[:id])
-    # is_deletedカラムをtrueに変更して削除フラグを立てる
+    # is_deletedカラムをtrueに変更して削除フラグを立てる 
     @customer.update(is_deleted: true)
     redirect_to admin_customer_path(@customer), notice: "退会処理を実行しました"
   end
