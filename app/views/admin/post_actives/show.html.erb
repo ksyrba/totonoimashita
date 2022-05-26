@@ -11,7 +11,7 @@
       <div class="participant col-3">
         <%= render 'public/communities/sidebar', customers: @customers %>
         <%= paginate @customers %>
-        <%= link_to "<<戻る" ,admin_community_path(@post_active.community) %>
+        <%= link_to "<<コミュニティの詳細画面に戻る" ,admin_community_path(@post_active.community) %>
       </div>
       <div class="post_show col-6 offset-1">
         <h4><u>投稿詳細</u></h4>
@@ -35,11 +35,11 @@
                   </tr>
                   <tr>
                     <td width="25%"><i class="fa fas fa-sort-amount-up"></i> セット数</td>
-                    <td width="75%"><%= @post_active.set_number %>回</td>
+                    <td width="75%"><%= @post_active.set_number %> 回</td>
                   </tr>
                   <tr>
                     <td width="25%"><i class="fa fas fa-clock"></i> 総時間</td>
-                    <td width="75%"><%= @post_active.total_time %>時間</td>
+                    <td width="75%"><%= @post_active.total_time %> 時間</td>
                   </tr>
                   <tr>
                     <% if @post_active.impression.present? %>

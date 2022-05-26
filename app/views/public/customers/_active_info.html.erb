@@ -32,22 +32,22 @@
 </div>
 <div class="active_record mt-3">
   <h4><u>よく行くサウナ施設</u></h4>
-  <table class="table table-bordered table-hover">
-    <tbody class="table-secondary text-center">
+  <table class="table table-bordered table-hover text-center">
+    <tbody class="table-secondary">
       <tr>
       <th>施設名</th>
       <th>サ活回数</th>
     </tr>
     </tbody>
-    <tbody>
+    <tbody style="background-color: #FFFFFF">
       <% communities.each do |community| %>
-      <tr class="text-center">
+      <tr>
         <td>
           <%= link_to community_path(community) do %>
             <%= community.community_name %>
           <% end %>
         </td>
-        <td><%= community.post_actives.count %></td>
+        <td><%= community.post_actives.count %> 回</td>
       </tr>
       <% end %>
     </tbody>
