@@ -45,6 +45,10 @@ width: 100%;
 z-index: 100;
 }
 
+.customer_display_name {
+  font-size: 15px;
+}
+
 .header_text {
   color: #333333;
   font-size: 20px;
@@ -143,6 +147,7 @@ p.footertopline{
 .title > h3 {
   display: inline-block;
   background: linear-gradient(transparent 80%, #ff0000 50%);
+  font-weight: bold;
 }
 
 .title {
