@@ -1,0 +1,29 @@
+<table class="table table-hover table-bordered text-center">
+  <thead class="thead-light">
+    <tr class="table-secondary">
+      <th>コミュニティ名</th>
+      <th>所在地</th>
+      <th>参加人数</th>
+      <th>投稿数</th>
+      <th>コミュニティ作成日</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody style="background-color: #FFFFFF">
+    <% communities.each do |community| %>
+    <tr>
+      <td>
+        <%= link_to admin_community_path(community) do %>
+          <%= community.community_name %>
+        <% end %>
+      </td>
+      <td><%= community.area.name %></td>
+      <td><%= community.customers.count %>人</td>
+      <td><%= community.post_actives.count %>個</td>
+      <td><%= community.created_at.strftime('%Y/%m/%d %R') %></td>
+      <td><%= link_to '編集する', edit_admin_community_path(community), class: "btn btn-sm btn-success" %></td>
+      <td><%= link_to '削除する', admin_community_path(community), method: :delete, "data-confirm" => "本当に削除してもよろしいですか？", class: "btn btn-sm btn-danger" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
