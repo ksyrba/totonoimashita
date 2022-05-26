@@ -1,17 +1,23 @@
 <div class="customer_profile">
-  <h4><u>ユーザープロフィール</u></h4>
+  <h4><u>プロフィール</u></h4>
   <div class="profile_image">
-    <%= image_tag customer.get_image, size: "80x80" %>
+    <%= image_tag customer.get_image, size: "150x150" %>
   </div>
-  <table class="table align-middle">
-    <tbody>
+  <table class="table table-bordered table-hover text-center m">
+    <tbody style="background-color: #FFFFFF">
       <tr>
-        <td width="40%">ユーザー名</td>
-        <td width="60%"><%= customer.name %></td>
+        <td width="35%">名前</td>
+        <td width="65%"><%= customer.name %></td>
       </tr>
       <tr>
         <td>性別</td>
-        <td><%= customer.sex_i18n %></td>
+        <td>
+          <% if customer.sex.present? %>
+            <%= customer.sex_i18n %>
+          <% else %>
+            <string>---</string>
+          <% end %>
+        </td>
       </tr>
       <tr>
         <td>年齢</td>
@@ -22,44 +28,18 @@
         <td><%= customer.area.name %></td>
       </tr>
       <tr>
-        <td>自己紹介</td>
-        <td><%= customer.introduction %></td>
+        <td>ひと言</td>
+        <td>
+          <% if customer.introduction.present? %>
+            <%= customer.introduction %>
+          <% else %>
+            <b>---</b>
+          <% end %>
+        </td>
       </tr>
     </tbody>
   </table>
   <% if (customer.id == current_customer.id) && (customer.name != "ゲストユーザー")  %>
     <%= link_to 'ユーザー情報を編集する', edit_customer_path(current_customer), class: "btn btn-success ml-3" %>
   <% end %>
-</div>
-<div class="active_record mt-3">
-  <h4><u>サ活回数</u></h4>
-  <table class="table align-middle">
-    <tbody>
-      <tr>
-        <td width="40%">直近１ヶ月</td>
-        <td width="60%"><%= customer.post_actives.visited_this_month.count %> 回</td>
-      </tr>
-      <tr>
-        <td>直近１年間</td>
-        <td><%= customer.post_actives.visited_this_year.count %> 回</td>
-      </tr>
-      <tr>
-        <td>トータル</td>
-        <td><%= customer.post_actives.count %> 回</td>
-      </tr>
-    </tbody>
-  </table>
-  <h4><u>その他サ活記録</u></h4>
-  <table class="table align-middle">
-    <tbody>
-      <tr>
-        <td width="40%">総セット数</td>
-        <td width="60%"><%= customer.total_set_number %> 回</td>
-      </tr>
-      <tr>
-        <td>総時間</td>
-        <td><%= customer.all_total_time %> 時間</td>
-      </tr>
-    </tbody>
-  </table>
 </div>

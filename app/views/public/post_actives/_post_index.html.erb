@@ -13,23 +13,25 @@
       </div>
       <%= link_to post_active_path(post_active) do %>
       <div class="card_post_detail">
-        <table class="table table-sm align-middle col-12">
+        <table class="table table-sm col-12">
           <tbody>
             <tr>
-              <td width="25%"><i class="fa fas fa-calendar-alt"></i> サ活日</td>
-              <td width="75%"><%= post_active.visit_date.strftime('%Y/%m/%d') %></td>
+              <td width="30%"><i class="fa fas fa-calendar-alt"></i> サ活日</td>
+              <td width="70%"><%= post_active.visit_date.strftime('%Y/%m/%d') %></td>
             </tr>
             <tr>
-              <td width="25%"><i class="fa fas fa-sort-amount-up"></i> セット数</td>
-              <td width="75%"><%= post_active.set_number %>回</td>
+              <td><i class="fa fas fa-sort-amount-up"></i> セット数</td>
+              <td><%= post_active.set_number %>回</td>
             </tr>
             <tr>
-              <td width="25%"><i class="fa fas fa-clock"></i> 総時間</td>
-              <td width="75%"><%= post_active.total_time %>時間</td>
+              <td><i class="fa fas fa-clock"></i> 総時間</td>
+              <td><%= post_active.total_time %>時間</td>
             </tr>
             <tr>
-              <td width="25%"><i class="fa fas fa-user-edit"></i> 感想など</td>
-              <td width="75%"><%= post_active.impression %></td>
+              <% if post_active.impression.present? %>
+                <td><i class="fa fas fa-user-edit"></i> 感想など</td>
+                <td><%= post_active.impression %></td>
+              <% end %>
             </tr>
           </tbody>
         </table>
@@ -51,7 +53,7 @@
           </p>
           <p>
             <%= link_to post_active_path(post_active) do %>
-              <i class="fa fas fa-comments"></i> 
+              <i class="fa fas fa-comments"></i>
             <% end %>
             <%= post_active.comments.count %> コメント
           </p>

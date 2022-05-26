@@ -47,8 +47,10 @@
                     <td width="75%"><%= @post_active.total_time %>時間</td>
                   </tr>
                   <tr>
-                    <td width="25%"><i class="fa fas fa-user-edit"></i> 感想など</td>
-                    <td width="75%"><%= @post_active.impression %></td>
+                    <% if @post_active.impression.present? %>
+                      <td width="25%"><i class="fa fas fa-user-edit"></i> 感想など</td>
+                      <td width="75%"><%= @post_active.impression %></td>
+                    <% end %>
                   </tr>
                 </tbody>
               </table>
@@ -73,15 +75,17 @@
             </div>
           </div>
         </div>
-        <% if @post_active.comments.exists? %>
-          <div id="comments_area" class="comment_index">
-            <h4 class="mt-2"><u>コメント一覧</u></h4>
+        <div id="comments_area" class="comment_index">
+          <% if @post_active.comments.exists? %>
             <%= render 'public/comments/comment_index', comments: @comments %>
-          </div>
-          <%= paginate @comments %>
-        <% end %>
+            <%= paginate @comments %>
+          <% else %>
+            <h4 class="mt-2"><u>コメント一覧</u></h4>
+            <p>コメントはありません</p>
+          <% end %>
+        </div>
       </div>
-      <div id="comments_area" class="post_comment_form col-3">
+      <div class="post_comment_form col-3">
         <h4><u>コメントの投稿</u></h4>
         <%= render 'public/comments/form', post_active: @post_active, comment: @comment %>
       </div>

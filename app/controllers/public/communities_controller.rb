@@ -31,6 +31,7 @@ class Public::CommunitiesController < ApplicationController
   def show
     @community = Community.find(params[:id])
     @customers = @community.customers.page(params[:page]).per(20)
+    # @customers = PostActive.group(:community_id).includes(:community).order('count_all DESC').count
     @customer_community = CustomerCommunity.find_by(customer_id: current_customer.id, community_id: params[:id])
     @post_active = PostActive.new
     @post_actives = PostActive.where(community_id: @community.id).page(params[:page]).per(10).order(created_at: :desc)

@@ -26,7 +26,9 @@ class Community < ApplicationRecord
   def self.search(word)
     where(["community_name like(?) OR address like(?)", "%#{word}%", "%#{word}%"])
   end
-  
+
+  scope :sort_post, -> (sort) { order(sort[:sort]) }
+
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 

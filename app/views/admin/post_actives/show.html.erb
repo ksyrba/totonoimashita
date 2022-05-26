@@ -11,7 +11,7 @@
       <div class="participant col-3">
         <%= render 'public/communities/sidebar', customers: @customers %>
         <%= paginate @customers %>
-        <%= link_to "<<戻る" ,admicommunity_path(@post_active.community) %>
+        <%= link_to "<<戻る" ,admin_community_path(@post_active.community) %>
       </div>
       <div class="post_show col-6">
         <h4><u>投稿詳細</u></h4>
@@ -42,8 +42,10 @@
                     <td width="75%"><%= @post_active.total_time %>時間</td>
                   </tr>
                   <tr>
-                    <td width="25%"><i class="fa fas fa-user-edit"></i> 感想など</td>
-                    <td width="75%"><%= @post_active.impression %></td>
+                    <% if @post_active.impression.present? %>
+                      <td width="25%"><i class="fa fas fa-user-edit"></i> 感想など</td>
+                      <td width="75%"><%= @post_active.impression %></td>
+                    <% end %>
                   </tr>
                 </tbody>
               </table>
@@ -54,20 +56,22 @@
                   </div>
                 </div>
                 <p class="mr-3">
-                  <i class="fa fas fa-heart" style="color: red;"></i><%= @post_active.favorites.count %> いいね
+                  <i class="fa fas fa-heart"></i><%= @post_active.favorites.count %> いいね
                 </p>
                 <p><i class="fa fas fa-comments"></i> <%= @post_active.comments.count %> コメント</p>
               </div>
             </div>
           </div>
         </div>
-        <% if @post_active.comments.exists? %>
-          <div id="comments_area" class="comment_index">
-            <h4 class="mt-2"><u>コメント一覧</u></h4>
+        <div id="comments_area" class="comment_index">
+          <% if @post_active.comments.exists? %>
             <%= render 'public/comments/comment_index', comments: @comments %>
-          </div>
-          <%= paginate @comments %>
-        <% end %>
+            <%= paginate @comments %>
+          <% else %>
+            <h4 class="mt-2"><u>コメント一覧</u></h4>
+            <p>コメントはありません</p>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
