@@ -39,7 +39,8 @@ class Admin::CommunitiesController < ApplicationController
       render 'edit'
     end
   end
-
+  
+  # コミュニティを削除するためのアクション
   def destroy
     @community = Community.find(params[:id])
     if @community.destroy

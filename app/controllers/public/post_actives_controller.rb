@@ -58,7 +58,8 @@ class Public::PostActivesController < ApplicationController
   def post_params
     params.require(:post_active).permit(:visit_date, :set_number, :total_time, :impression, :community_id)
   end
-
+  
+  # 権限のないページへのアクセス&編集を制限
   def ensure_correct_post_active
     @post_active = PostActive.find(params[:id])
     @community = @post_active.community

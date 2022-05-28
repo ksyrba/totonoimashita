@@ -21,7 +21,8 @@ class Public::CommunitiesController < ApplicationController
   def index
     @communities = Community.page(params[:page]).per(20).order(created_at: :desc)
   end
-
+  
+  # コミュニティに参加する時のアクション
   def join
     @community = Community.find(params[:community_id])
     @community.customers << current_customer
@@ -48,7 +49,8 @@ class Public::CommunitiesController < ApplicationController
       render 'edit'
     end
   end
-
+  
+  # コミュニテイを退会するときのアクション
   def destroy
     current_customer.customer_communities.find_by(community_id: params[:id]).destroy
     redirect_to communities_path
@@ -59,7 +61,8 @@ class Public::CommunitiesController < ApplicationController
   def community_params
     params.require(:community).permit(:community_name, :area_id, :address, :phone_number, :description, :image)
   end
-
+  
+  # 権限のないページへのアクセス&編集を制限
   def ensure_correct_customer
     @community = Community.find(params[:id])
     unless @community.owner_id == current_customer.id

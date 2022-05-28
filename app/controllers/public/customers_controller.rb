@@ -5,8 +5,6 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
     @post_actives = @customer.post_actives.page(params[:page]).per(10).order(created_at: :desc)
-    # @communities = Community.joins(:post_actives).where("post_actives.customer_id=?",@customer.id).group(:id,:community_name).order('count(customer_id) desc').pluck("id","community_name","count(customer_id)")
-  
   end
 
   def edit
@@ -27,17 +25,19 @@ class Public::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:name, :sex, :birthdate, :area_id, :introduction, :is_deleted, :image)
   end
-
+  
+  # 権限のないページへのアクセス&編集を制限
   def ensure_correct_customer
     @customer = Customer.find(params[:id])
     unless @customer == current_customer
       redirect_to customer_path(current_customer)
     end
   end
-
+  
+  # ゲストユーザーのアクセス&編集を制限
   def ensure_guest_user
     @customer = Customer.find(params[:id])
-    if @user.name == "guestuser"
+    if @user.name == "ゲストユーザー"
       redirect_to customer_path(current_customer) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end

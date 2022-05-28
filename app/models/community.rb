@@ -14,7 +14,8 @@ class Community < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :area
-
+  
+  # 画像を表示するための定義
   def get_image
     if image.attached?
       image

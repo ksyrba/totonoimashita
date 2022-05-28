@@ -28,7 +28,8 @@ class Customer < ApplicationRecord
       user.name = "ゲストユーザー"
     end
   end
-
+  
+  # 画像を表示するための定義
   def get_image
     if image.attached?
       image
@@ -36,7 +37,8 @@ class Customer < ApplicationRecord
       'no_image_user.jpeg'
     end
   end
-
+ 
+ # 生年月日から年齢を割り出すための定義
   def age
     (Date.today.strftime('%Y%m%d').to_i - birthdate.strftime('%Y%m%d').to_i) / 10000
   end
