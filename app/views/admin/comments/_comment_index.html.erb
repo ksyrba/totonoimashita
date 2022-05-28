@@ -2,7 +2,7 @@
 <% comments.each do |comment| %>
   <div class="cards d-flex justify-content-center">
     <div class="card_comment">
-      <div class="row card_comment_">
+      <div class="row card_comment_top">
         <%= link_to admin_customer_path(comment.customer), class: "customer_name" do %>
           <p><%= image_tag comment.customer.get_image, size: "25x25" %></p>
           <p class="ml-1"><%= comment.customer.name %></p>
