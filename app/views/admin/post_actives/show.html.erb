@@ -1,24 +1,19 @@
 <div class="container">
   <div class="row">
-    <div id="comments-error" class="text-error">
-      <%= render 'layouts/errors', obj: @comment %>
-    </div>
-  </div>
-  <div class="row">
     <div class="title">
       <h3><%= @post_active.community.community_name %></h3>
       <span>（<%= @post_active.community.area.name %>）</span>
     </div>
     <div class="row">
       <div class="community_detail col-12">
-        <%= render 'public/communities/topbar', community: @post_active.community %>
+        <%= render 'admin/communities/topbar', community: @post_active.community %>
       </div>
       <div class="participant col-3">
         <%= render 'public/communities/sidebar', customers: @customers %>
         <%= paginate @customers %>
-        <%= link_to "<<サ活情報一覧に戻る" ,community_path(@post_active.community) %>
+        <%= link_to "<<サ活情報一覧に戻る" ,admin_community_path(@post_active.community) %>
       </div>
-      <div class="post_show col-6">
+      <div class="post_show col-6 offset-1">
         <h4><u>サ活情報詳細</u></h4>
         <div class="cards d-flex justify-content-center mb-3">
           <div class="card_post">
@@ -56,14 +51,12 @@
               </table>
               <div class="card_post_under">
                 <div class="card_post_button">
-                  <div class="edit_button mr-3">
-                  <% if @post_active.customer_id == current_customer.id %>
-                    <%= link_to '編集する', edit_post_active_path(@post_active), class: "btn-sm btn-success" %>
-                  <% end %>
+                  <div class="delete_button">
+                    <%= link_to '削除する', admin_post_active_path(@post_active), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn-sm btn-danger" %>
                   </div>
                 </div>
-                <p id="favorite_buttons_<%= @post_active.id %>" class="mr-3">
-                  <%= render 'public/favorites/favorite', post_active: @post_active %>
+                <p class="mr-3">
+                  <i class="fa fas fa-heart"></i><%= @post_active.favorites.count %> いいね
                 </p>
                 <p><i class="fa fas fa-comments"></i> <%= @post_active.comments.count %> コメント</p>
               </div>
@@ -72,17 +65,13 @@
         </div>
         <div id="comments_area" class="comment_index">
           <% if @post_active.comments.exists? %>
-            <%= render 'public/comments/comment_index', comments: @comments %>
+            <%= render 'admin/comments/comment_index', comments: @comments %>
             <%= paginate @comments %>
           <% else %>
             <h4 class="mt-2"><u>コメント</u></h4>
             <p>コメントはありません</p>
           <% end %>
         </div>
-      </div>
-      <div class="post_comment_form col-3">
-        <h4><u>コメントの投稿</u></h4>
-        <%= render 'public/comments/form', post_active: @post_active, comment: @comment %>
       </div>
     </div>
   </div>

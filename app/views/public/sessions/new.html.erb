@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row d-flex justify-content-center">
-    <div class="text-error">
-      <%= render 'layouts/errors', obj: @customer %>
-    </div>
     <div class="log_in col-4">
+      <div class="text-error">
+        <%= render 'layouts/errors', obj: @customer %>
+      </div>
       <div class="title">
         <h3>ログイン</h3>
       </div>
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= form_with model: @customer, url: customer_session_path do |f| %>
         <div class="form-group col-12">
           <%= f.label :"メールアドレス" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'  %>

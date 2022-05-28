@@ -39,9 +39,11 @@
       </tr>
     </tbody>
   </table>
-  <% if (customer.id == current_customer.id) && (customer.name != "ゲストユーザー")  %>
-    <%= link_to 'ユーザー情報を編集する', edit_customer_path(current_customer), class: "btn btn-success ml-3" %>
-  <% end %>
+  <div class="unsubscribe_button ml-2">
+    <% if (customer.is_deleted == "有効") && (customer.name != "ゲストユーザー")  %>
+      <%= link_to '退会させる', unsubscribe_admin_customer_path(customer), method: :patch, "data-confirm" => "本当に退会させてもよろしいですか？", class: "btn btn-danger" %>
+    <% end %>
+  </div>
 </div>
 <div class="active_record mt-3">
   <h4><u>サ活回数</u></h4>

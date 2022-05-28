@@ -5,12 +5,12 @@
     </div>
    </div>
   <div class="row">
-    <div class="customer_detail col-4">
+    <div class="customer_detail_left col-4">
       <%= render 'customer_info', customer: @customer %>
     </div>
     <div class="post_index col-6 offset-1" >
       <% if @customer.post_actives.exists? %>
-      <%= render 'public/post_actives/post_index', post_actives: @post_actives %>
+      　　<%= render 'public/post_actives/post_index', post_actives: @post_actives %>
       <% else %>
         <h4><u>投稿一覧</u></h4>
         <p>投稿はありません</p>

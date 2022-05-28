@@ -3,12 +3,12 @@
   <div class="cards d-flex justify-content-center">
     <div class="card_post">
       <div class="row card_post_top">
-        <%= link_to customer_path(post_active.customer), class: "customer_name" do %>
+        <%= link_to admin_customer_path(post_active.customer), class: "customer_name" do %>
           <p><%= image_tag post_active.customer.get_image, size: "30x30" %></p>
           <p class="ml-1"><%= post_active.customer.name %></p>
         <% end %>
         <p class="post_community">
-          <%= link_to community_path(post_active.community) do %>
+          <%= link_to admin_community_path(post_active.community) do %>
             <%= post_active.community.community_name %>
           <% end %>
         </p>
@@ -16,7 +16,7 @@
           <%= post_active.created_at.strftime('%Y/%m/%d %R') %>
         </p>
       </div>
-      <%= link_to post_active_path(post_active) do %>
+      <%= link_to admin_post_active_path(post_active) do %>
       <div class="card_post_detail">
         <table class="table table-sm col-12">
           <tbody>
@@ -42,22 +42,15 @@
         </table>
         <div class="card_post_under">
           <div class="card_post_button">
-            <div class="edit_button mr-3">
-            <% if post_active.customer_id == current_customer.id %>
-              <%= link_to '編集する', edit_post_active_path(post_active), class: "btn-sm btn-success" %>
-            <% end %>
-            </div>
             <div class="delete_button">
-            <% if post_active.customer_id == current_customer.id %>
-              <%= link_to '削除する', post_active_path(post_active), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn-sm btn-danger" %>
-            <% end %>
+              <%= link_to '削除する', admin_post_active_path(post_active), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn-sm btn-danger" %>
             </div>
           </div>
-          <p id="favorite_buttons_<%= post_active.id %>" class="mr-3">
-            <%= render 'public/favorites/favorite', post_active: post_active %>
+          <p class="mr-3">
+            <i class="fa fas fa-heart"></i><%= post_active.favorites.count %> いいね
           </p>
           <p>
-            <%= link_to post_active_path(post_active) do %>
+            <%= link_to admin_post_active_path(post_active) do %>
               <i class="fa fas fa-comments"></i>
             <% end %>
             <%= post_active.comments.count %> コメント

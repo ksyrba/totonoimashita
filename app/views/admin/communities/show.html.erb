@@ -1,2 +1,27 @@
-<h1>Admin::Communities#show</h1>
-<p>Find me in app/views/admin/communities/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="title">
+      <h3><%= @community.community_name %></h3>
+      <span>（<%= @community.area.name %>）</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="community_detail col-12">
+      <%= render 'admin/communities/topbar', community: @community %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="participant col-3">
+      <%= render 'admin/communities/sidebar', customers: @customers %>
+      <%= paginate @customers %>
+    </div>
+    <div class="post_index col-6 offset-1 mt-2">
+      <% if @community.post_actives.exists? %>
+        <%= render 'admin/post_actives/post_index', post_actives: @post_actives %>
+      <% else %>
+        <h4><u>投稿一覧</u></h4>
+        <p>投稿はありません</p>
+      <% end %>
+      <%= paginate @post_actives %>
+    </div>
+</div>

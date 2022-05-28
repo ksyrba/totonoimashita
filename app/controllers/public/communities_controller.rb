@@ -1,6 +1,6 @@
 class Public::CommunitiesController < ApplicationController
   before_action :authenticate_customer!, except: [:index]
-  before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
+  before_action :ensure_correct_customer, only: [:edit, :update]
 
   def new
     @community = Community.new
@@ -43,18 +43,16 @@ class Public::CommunitiesController < ApplicationController
   def update
     if @community.update(community_params)
       flash[:notice] = "コミュニティが更新されました"
-      redirect_to registration_communities_path
+      redirect_to community_path(@community)
     else
       render 'edit'
     end
   end
 
   def destroy
-    @community = Community.find(params[:id])
-    @community.customers.destroy(current_customer)
+    current_customer.customer_communities.find_by(community_id: params[:id]).destroy
     redirect_to communities_path
   end
-
 
   private
 

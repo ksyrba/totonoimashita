@@ -13,13 +13,361 @@
  *= require_tree .
  *= require_self
  */
- 
- .image_top {
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.contents {
+  background-color: #DDFFFF;
+　font-family:"ヒラギノ明朝 ProN W6","HiraMinProN-W6","HG明朝E","ＭＳ Ｐ明朝","MS PMincho","MS 明朝",serif;
+  font-weight:bold;
+}
+
+#notice {
+  text-align: center;
+  background-color: #00FF00;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.header {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+z-index: 100;
+}
+
+.customer_display_name {
+  font-size: 15px;
+}
+
+.header_text {
+  color: #333333;
+  font-size: 20px;
+}
+
+.header_text:hover {
+  color: #111111;
+  background:linear-gradient(transparent 70%, #FF0000 0%);
+}
+
+main {
+  padding-top: 130px;
+  padding-bottom: 30px;
+  width: 100%;
+}
+
+p.footertopline{
+  border-top-style: solid;
+  border-width: 1px;
+}
+
+.footer_icon {
+  margin-left: 10px;
+}
+
+.log_in {
+  border: solid 3px #000000;
+  border-radius: 15px;
+  background-color: #EEEEEE;
+  padding: 10px;
+  height: auto;
+}
+
+.sign_up {
+  border: solid 3px #000000;
+  border-radius: 15px;
+  background-color: #EEEEEE;
+  padding: 10px;
+  height: auto;
+}
+
+.image_top {
  background-image: image-url("sauna1.jpeg");
- /*background-image: url(/assets/sauna1.jpeg);*/
  background-size: 100% 100%;
- width: 100%;
  height: 200px;
- z-index: 0;
  border-radius: 30px;
+}
+
+.image_content {
+  height: 200px;
+  background-color: rgba( 255, 255, 230, 0.5);
+}
+
+.image_message {
+  font-size: 120px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.image_logo {
+  text-align: center;
+}
+
+.site_explanation {
+  background-color: #0000FF;
+  color: #ffffff;
+  margin-top: 20px;
+  height: 300px;
+  border-radius: 30px;
+  padding: 10px 20px;
+  position: relative;
+}
+
+.usage > b {
+  color: #ff0000;
+  font-size: 30px;
+}
+
+.site_explanation_image {
+  position: absolute;
+  top: 120px;
+  right: 5px;
+}
+
+.community_form {
+  border: solid 3px #000000;
+  border-radius: 15px;
+  background-color: #EEEEEE;
+  margin-top: 10px;
+  padding: 15px;
+  height: auto;
+}
+
+.title > h3 {
+  display: inline-block;
+  background: linear-gradient(transparent 80%, #ff0000 50%);
+  font-weight: bold;
+}
+
+u {
+  font-weight: bold;
+}
+
+.title {
+  position: relative;
+}
+
+.title > span {
+  font-size: 20px;
+}
+
+.bottun_new {
+  position: absolute;
+  right: 20px;
+}
+
+.search {
+  display: flex;
+  margin-top: 10px;
+}
+
+.search_bar {
+  margin-right: 30px;
+}
+
+.search_button {
+  height: 30px;
+  width: 30px;
+  border-radius: 10%;
+  color: #ffffff;
+  background-color: #000000;
+  text-decoration:none;
+}
+
+.area-select {
+  height: 30px;
+}
+
+.card_community {
+  padding: 5px;
+  margin: 5px;
+  border-radius: 15px;
+  background-color: #faebd7;
+  width: 270px;
+  text-decoration: none;
+}
+
+.card_title {
+  text-align: center;
+  margin-bottom : 5px;
+}
+
+.card_text {
+  display: flex;
+  justify-content: center;
+}
+
+.card_sidebar {
+  margin-left: 15px;
+}
+
+.edit_button {
+  margin-bottom : 5px;
+}
+
+.join {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.join > .join_button {
+  margin-top: 10px;
+}
+
+.return_button {
+  float: left;
+}
+
+.community_detail {
+  display: flex;
+  border-bottom: dashed 3px #000000;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.topbar_right {
+  position: absolute;
+  top: 5px;
+  right: 0px;
+  margin-left: 10px;
+}
+
+.community_button {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+
+.post_form {
+  border: solid 3px #000000;
+  border-radius: 15px;
+  background-color: #EEEEEE;
+  margin-top: 10px;
+  padding: 10px;
+  height: 650px;
+}
+
+.complement {
+  font-size: 12px;
+}
+
+.card_post_top {
+  position: relative;
+  display: flex;
+}
+
+.customer_name > p {
+  font-size: 20px;
+}
+
+.customer_name {
+  display: flex;
+  padding-left: 20px;
+}
+
+.post_community {
+  margin-left: 30px;
+}
+
+.post_time {
+  position: absolute;
+  right: 20px;
+}
+
+.card_post, .card_comment {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  background-color: #CBFFD3	;
+  width: 100%;
+  text-decoration: none;
+  color: #000000;
+}
+
+.card_post_detail {
+  position: relative;
+}
+
+.card_post_under {
+  display: flex;
+  justify-content: right;
+  position: relative;
+}
+
+.card_post_button {
+  position: absolute;
+  left: 5px;
+  display: flex;
+}
+
+.comment_index {
+  border-top: dashed 3px #000000;
+  margin-top: 5px;
+}
+
+.comment_button {
+  position: absolute;
+  top: 20px;
+  right: 5px;
+}
+
+.post_comment_form {
+  border: solid 3px #000000;
+  border-radius: 15px;
+  background-color: #EEEEEE;
+  margin-top: 10px;
+  padding: 10px;
+  height: 250px;
+}
+
+.profile_image {
+  text-align: center;
+}
+
+.customer_profile {
+  border: solid 3px #000000;
+  background-color: #FFFFCC;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.active_record {
+  border: solid 3px #000000;
+  border-radius: 15px;
+  background-color: #FFEEFF;
+  padding: 10px;
+  height: auto;
+}
+
+.post_form_edit {
+  border: solid 3px #000000;
+  border-radius: 15px;
+  background-color: #EEEEEE;
+  padding: 10px;
+  height: 700px;
+}
+
+
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;
 }

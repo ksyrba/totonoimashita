@@ -1,29 +1,38 @@
 <header class="header">
   <nav class="navbar navbar-expand-lg navbar-light p-2" style="background-color: #00FFFF;" >
     <div class="container">
-      <a class="navbar-brand" href="/admin">
+      <a class="navbar-brand" href="/">
         <div class= 'header_logo'>
           <%= image_tag('sauna2.png', size: '250x80') %>
         </div>
       </a>
-      <% if admin_signed_in? %>
+      <% if customer_signed_in? %>
+        <div class="customer_display_name">
+          <%= current_customer.name %>さん！</br>
+          今日もトトノって行きましょう！
+        </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
             <li>
-              <%= link_to admin_communities_path, class: 'nav-link heaedr-link' do %>
-                <b class="header_text">コミュニティ一覧</b>
+              <%= link_to communities_path, class: 'nav-link heaedr-link' do %>
+                <b class="header_text">コミュニティを探す</b>
               <% end %>
             </li>
             <li>
-              <%= link_to admin_customers_path, class: 'nav-link heaedr-link' do %>
-                <b class="header_text">会員一覧</b>
+              <%= link_to registration_communities_path, class: 'nav-link heaedr-link' do %>
+                <b class="header_text">マイコミュニティ</b>
               <% end %>
             </li>
             <li>
-              <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link heaedr-link' do %>
+              <%= link_to customer_path(current_customer), class: 'nav-link heaedr-link' do %>
+                <b class="header_text">マイページ</b>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link heaedr-link' do %>
                 <b class="header_text">ログアウト</b>
               <% end %>
             </li>
@@ -36,7 +45,17 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
             <li>
-              <%= link_to new_admin_session_path, class: 'nav-link heaedr-link' do %>
+              <%= link_to communities_path, class: 'nav-link heaedr-link' do %>
+                <b class="header_text">コミュニティ一覧</b>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_customer_registration_path, class: 'nav-link heaedr-link' do %>
+                <b class="header_text">新規登録</b>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_customer_session_path, class: 'nav-link heaedr-link' do %>
                 <b class="header_text">ログイン</b>
               <% end %>
             </li>
