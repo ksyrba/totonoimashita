@@ -6,8 +6,8 @@
   <table class="table table-bordered table-hover text-center mt-1">
     <tbody style="background-color: #FFFFFF">
       <tr>
-        <td width="35%">名前</td>
-        <td width="65%"><%= customer.name %></td>
+        <td width="30%">名前</td>
+        <td width="70%"><%= customer.name %></td>
       </tr>
       <tr>
         <td>性別</td>
@@ -28,7 +28,7 @@
         <td><%= customer.area.name %></td>
       </tr>
       <tr>
-        <td>ひと言</td>
+        <td>自己紹介</td>
         <td>
           <% if customer.introduction.present? %>
             <%= customer.introduction %>
@@ -42,4 +42,36 @@
   <% if (customer.id == current_customer.id) && (customer.name != "ゲストユーザー")  %>
     <%= link_to 'ユーザー情報を編集する', edit_customer_path(current_customer), class: "btn btn-success ml-3" %>
   <% end %>
+</div>
+<div class="active_record mt-3">
+  <h4><u>サ活回数</u></h4>
+  <table class="table table-bordered table-hover text-center">
+    <tbody style="background-color: #FFFFFF">
+      <tr>
+        <td width="50%">直近１ヶ月</td>
+        <td width="50%"><%= customer.post_actives.visited_this_month.count %> 回</td>
+      </tr>
+      <tr>
+        <td>直近１年間</td>
+        <td><%= customer.post_actives.visited_this_year.count %> 回</td>
+      </tr>
+      <tr>
+        <td>トータル</td>
+        <td><%= customer.post_actives.count %> 回</td>
+      </tr>
+    </tbody>
+  </table>
+  <h4><u>その他サ活記録</u></h4>
+  <table class="table table-bordered table-hover text-center">
+    <tbody style="background-color: #FFFFFF">
+      <tr>
+        <td width="50%">総セット数</td>
+        <td width="50%"><%= customer.post_actives.sum(:set_number) %> 回</td>
+      </tr>
+      <tr>
+        <td>総時間</td>
+        <td><%= customer.post_actives.sum(:total_time) %> 時間</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

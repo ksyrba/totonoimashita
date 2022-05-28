@@ -11,10 +11,10 @@
       <div class="participant col-3">
         <%= render 'public/communities/sidebar', customers: @customers %>
         <%= paginate @customers %>
-        <%= link_to "<<コミュニティの詳細画面に戻る" ,admin_community_path(@post_active.community) %>
+        <%= link_to "<<サ活情報一覧に戻る" ,admin_community_path(@post_active.community) %>
       </div>
       <div class="post_show col-6 offset-1">
-        <h4><u>投稿詳細</u></h4>
+        <h4><u>サ活情報詳細</u></h4>
         <div class="cards d-flex justify-content-center mb-3">
           <div class="card_post">
             <div class="row card_customer_name">
@@ -65,10 +65,10 @@
         </div>
         <div id="comments_area" class="comment_index">
           <% if @post_active.comments.exists? %>
-            <%= render 'public/comments/comment_index', comments: @comments %>
+            <%= render 'admin/comments/comment_index', comments: @comments %>
             <%= paginate @comments %>
           <% else %>
-            <h4 class="mt-2"><u>コメント一覧</u></h4>
+            <h4 class="mt-2"><u>コメント</u></h4>
             <p>コメントはありません</p>
           <% end %>
         </div>

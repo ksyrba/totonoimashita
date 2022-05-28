@@ -50,7 +50,7 @@ class Public::PostActivesController < ApplicationController
   def destroy
     @post_active = PostActive.find(params[:id])
     @post_active.destroy
-    redirect_to community_path(@post_active.community_id)
+    redirect_to request.referer
   end
 
   private

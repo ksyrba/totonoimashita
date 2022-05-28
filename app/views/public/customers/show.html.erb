@@ -5,10 +5,10 @@
     </div>
    </div>
   <div class="row">
-    <div class="customer_detail_left col-3">
+    <div class="customer_detail_left col-4">
       <%= render 'customer_info', customer: @customer %>
     </div>
-    <div class="post_index col-5" >
+    <div class="post_index col-6 offset-1" >
       <% if @customer.post_actives.exists? %>
       　　<%= render 'public/post_actives/post_index', post_actives: @post_actives %>
       <% else %>
@@ -16,9 +16,6 @@
         <p>投稿はありません</p>
       <% end %>
       <%= paginate @post_actives %>
-    </div>
-    <div class="customer_detail_left col-4">
-      <%= render 'active_info', customer: @customer, communities: @communities %>
     </div>
   </div>
 </div>

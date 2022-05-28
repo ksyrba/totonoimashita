@@ -16,10 +16,10 @@
       <div class="participant col-3">
         <%= render 'public/communities/sidebar', customers: @customers %>
         <%= paginate @customers %>
-        <%= link_to "<<コミュニティの詳細画面に戻る" ,community_path(@post_active.community) %>
+        <%= link_to "<<サ活情報一覧に戻る" ,community_path(@post_active.community) %>
       </div>
       <div class="post_show col-6">
-        <h4><u>投稿詳細</u></h4>
+        <h4><u>サ活情報詳細</u></h4>
         <div class="cards d-flex justify-content-center mb-3">
           <div class="card_post">
             <div class="row card_customer_name">
@@ -61,11 +61,6 @@
                     <%= link_to '編集する', edit_post_active_path(@post_active), class: "btn-sm btn-success" %>
                   <% end %>
                   </div>
-                  <div class="delete_button">
-                  <% if @post_active.customer_id == current_customer.id %>
-                    <%= link_to '削除する', post_active_path(@post_active), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn-sm btn-danger" %>
-                  <% end %>
-                  </div>
                 </div>
                 <p id="favorite_buttons_<%= @post_active.id %>" class="mr-3">
                   <%= render 'public/favorites/favorite', post_active: @post_active %>
@@ -80,7 +75,7 @@
             <%= render 'public/comments/comment_index', comments: @comments %>
             <%= paginate @comments %>
           <% else %>
-            <h4 class="mt-2"><u>コメント一覧</u></h4>
+            <h4 class="mt-2"><u>コメント</u></h4>
             <p>コメントはありません</p>
           <% end %>
         </div>

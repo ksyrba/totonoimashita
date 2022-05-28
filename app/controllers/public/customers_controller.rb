@@ -5,7 +5,8 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
     @post_actives = @customer.post_actives.page(params[:page]).per(10).order(created_at: :desc)
-    @communities = Community.joins(:post_actives).where(post_actives: { customer_id: @customer.id }).group(:community_name).order('count(customer_id) desc').limit(5)
+    # @communities = Community.joins(:post_actives).where("post_actives.customer_id=?",@customer.id).group(:id,:community_name).order('count(customer_id) desc').pluck("id","community_name","count(customer_id)")
+  
   end
 
   def edit

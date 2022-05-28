@@ -23,9 +23,6 @@
 
 .contents {
   background-color: #DDFFFF;
-  // font-family:游明朝,"Yu Mincho",YuMincho,"Hiragino Mincho ProN",HGS明朝E,メイリオ,Meiryo,serif;
-//   font-family:"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,"ＭＳ Ｐゴシック",sans-serif;
-// 　font-weight:bold;
 　font-family:"ヒラギノ明朝 ProN W6","HiraMinProN-W6","HG明朝E","ＭＳ Ｐ明朝","MS PMincho","MS 明朝",serif;
   font-weight:bold;
 }
@@ -79,7 +76,7 @@ p.footertopline{
   border-radius: 15px;
   background-color: #EEEEEE;
   padding: 10px;
-  height: 310px;
+  height: auto;
 }
 
 .sign_up {
@@ -87,7 +84,7 @@ p.footertopline{
   border-radius: 15px;
   background-color: #EEEEEE;
   padding: 10px;
-  height: 690px;
+  height: auto;
 }
 
 .image_top {
@@ -264,13 +261,22 @@ u {
   font-size: 12px;
 }
 
+.card_post_top {
+  position: relative;
+  display: flex;
+}
+
+.customer_name > p {
+  font-size: 20px;
+}
+
 .customer_name {
   display: flex;
   padding-left: 20px;
 }
 
-.card_customer_name {
-  position: relative;
+.post_community {
+  margin-left: 30px;
 }
 
 .post_time {
@@ -340,7 +346,7 @@ u {
   border-radius: 15px;
   background-color: #FFEEFF;
   padding: 10px;
-  height: 370px;
+  height: auto;
 }
 
 .post_form_edit {
