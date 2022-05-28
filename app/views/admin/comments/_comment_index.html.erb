@@ -2,11 +2,14 @@
 <% comments.each do |comment| %>
   <div class="cards d-flex justify-content-center">
     <div class="card_comment">
-      <div class="row card_comment_name">
+      <div class="row card_comment_">
         <%= link_to admin_customer_path(comment.customer), class: "customer_name" do %>
           <p><%= image_tag comment.customer.get_image, size: "25x25" %></p>
-          <h6><%= comment.customer.name %></h6>
+          <p class="ml-1"><%= comment.customer.name %></p>
         <% end %>
+        <p class="post_time">
+          <%= @post_active.created_at.strftime('%Y/%m/%d %R') %>
+        </p>
       </div>
       <div class="comment_body">
         <p><%= comment.comment %></p>
