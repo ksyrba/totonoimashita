@@ -37,9 +37,8 @@ Rails.application.routes.draw do
       patch :unsubscribe, on: :member
     end
     resources :communities
-    resources :registration_communities, only:[:index, :destroy]
     resources :post_actives, only:[:create, :show, :destroy] do
-      resources :comments, only: [:create]
+      resources :comments, only: [:destroy]
     end
     get "searches/search_community"=>'searches#search_community'
     get "searches/search_area"=>'searches#search_area'
