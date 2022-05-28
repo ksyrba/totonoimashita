@@ -11,16 +11,16 @@
       <div class="participant col-3">
         <%= render 'public/communities/sidebar', customers: @customers %>
         <%= paginate @customers %>
-        <%= link_to "<<戻る" ,admicommunity_path(@post_active.community) %>
+        <%= link_to "<<サ活情報一覧に戻る" ,admin_community_path(@post_active.community) %>
       </div>
-      <div class="post_show col-6">
-        <h4><u>投稿詳細</u></h4>
+      <div class="post_show col-6 offset-1">
+        <h4><u>サ活情報詳細</u></h4>
         <div class="cards d-flex justify-content-center mb-3">
           <div class="card_post">
             <div class="row card_customer_name">
               <%= link_to customer_path(@post_active.customer_id), class: "customer_name" do %>
                 <p><%= image_tag @post_active.customer.get_image, size: "30x30" %></p>
-                <h5><%= @post_active.customer.name %></h5>
+                <h5 class="ml-1"><%= @post_active.customer.name %></h5>
               <% end %>
               <p class="post_time">
                 投稿日：<%= @post_active.created_at.strftime('%Y/%m/%d %R') %>
@@ -35,15 +35,17 @@
                   </tr>
                   <tr>
                     <td width="25%"><i class="fa fas fa-sort-amount-up"></i> セット数</td>
-                    <td width="75%"><%= @post_active.set_number %>回</td>
+                    <td width="75%"><%= @post_active.set_number %> 回</td>
                   </tr>
                   <tr>
                     <td width="25%"><i class="fa fas fa-clock"></i> 総時間</td>
-                    <td width="75%"><%= @post_active.total_time %>時間</td>
+                    <td width="75%"><%= @post_active.total_time %> 時間</td>
                   </tr>
                   <tr>
-                    <td width="25%"><i class="fa fas fa-user-edit"></i> 感想など</td>
-                    <td width="75%"><%= @post_active.impression %></td>
+                    <% if @post_active.impression.present? %>
+                      <td width="25%"><i class="fa fas fa-user-edit"></i> 感想など</td>
+                      <td width="75%"><%= @post_active.impression %></td>
+                    <% end %>
                   </tr>
                 </tbody>
               </table>
@@ -54,20 +56,22 @@
                   </div>
                 </div>
                 <p class="mr-3">
-                  <i class="fa fas fa-heart" style="color: red;"></i><%= @post_active.favorites.count %> いいね
+                  <i class="fa fas fa-heart"></i><%= @post_active.favorites.count %> いいね
                 </p>
                 <p><i class="fa fas fa-comments"></i> <%= @post_active.comments.count %> コメント</p>
               </div>
             </div>
           </div>
         </div>
-        <% if @post_active.comments.exists? %>
-          <div id="comments_area" class="comment_index">
-            <h4 class="mt-2"><u>コメント一覧</u></h4>
-            <%= render 'public/comments/comment_index', comments: @comments %>
-          </div>
-          <%= paginate @comments %>
-        <% end %>
+        <div id="comments_area" class="comment_index">
+          <% if @post_active.comments.exists? %>
+            <%= render 'admin/comments/comment_index', comments: @comments %>
+            <%= paginate @comments %>
+          <% else %>
+            <h4 class="mt-2"><u>コメント</u></h4>
+            <p>コメントはありません</p>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

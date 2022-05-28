@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Totonoimashita</title>
+    <title>トトノイマシタ</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -12,7 +12,8 @@
   </head>
 
   <body>
-    <% if @current_path == '/admin' %>
+    <div class="contents">
+    <% if request.path.include?('/admin') %>
       <%= render 'layouts/admin_header' %>
     <% else %>
       <%= render 'layouts/public_header' %>
@@ -22,5 +23,6 @@
       <%= yield %>
     </main>
     <%= render 'layouts/footer' %>
+
   </body>
 </html>

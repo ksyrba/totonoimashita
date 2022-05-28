@@ -1,6 +1,6 @@
 class Customer < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -41,11 +41,4 @@ class Customer < ApplicationRecord
     (Date.today.strftime('%Y%m%d').to_i - birthdate.strftime('%Y%m%d').to_i) / 10000
   end
 
-  def total_set_number
-    post_actives.sum(:set_number)
-  end
-
-  def all_total_time
-    post_actives.sum(:total_time)
-  end
 end

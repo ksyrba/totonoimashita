@@ -43,7 +43,7 @@ class Public::CommunitiesController < ApplicationController
   def update
     if @community.update(community_params)
       flash[:notice] = "コミュニティが更新されました"
-      redirect_to registration_communities_path
+      redirect_to community_path(@community)
     else
       render 'edit'
     end

@@ -14,7 +14,7 @@
   <div class="row justify-content-center">
     <div class="community_index col-12 mt-3">
       <%= render 'admin/communities/index', communities: @communities %>
+      <%= paginate @communities %>
     </div>
   </div>
-  <%= paginate @communities %>
 </div>

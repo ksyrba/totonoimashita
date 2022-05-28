@@ -26,7 +26,7 @@ class Community < ApplicationRecord
   def self.search(word)
     where(["community_name like(?) OR address like(?)", "%#{word}%", "%#{word}%"])
   end
-  
+
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 

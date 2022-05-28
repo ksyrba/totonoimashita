@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row title">
     <h3>コミュニティ一覧</h3>
-    <span>（全<%= @search_result.count %>件 / 検索結果「<%= @word %>」）</span>
+    <span>（全<%= @search_result.count %>件 / 「<%= @word %>」の検索）</span>
     <div class="bottun_new">
       <%= link_to 'コミュニティを新規作成する', new_community_path, class: "btn btn-success" %>
     </div>
@@ -14,7 +14,7 @@
   <div class="row justify-content-cente">
     <div class="community_index col-12">
       <%= render 'admin/communities/index', communities: @search_result %>
+      <%= paginate @communities %>
     </div>
   </div>
-  <%= paginate @communities %>
 </div>

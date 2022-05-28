@@ -34,7 +34,7 @@ class Admin::CommunitiesController < ApplicationController
     @community = Community.find(params[:id])
     if @community.update(community_params)
       flash[:notice] = "コミュニティが更新されました"
-      redirect_to admin_communities_path
+      redirect_to admin_community_path(@community)
     else
       render 'edit'
     end
