@@ -6,7 +6,7 @@ class PostActive < ApplicationRecord
   
   validates :visit_date, :set_number, :total_time, presence: true
   
-  # 直近１ヶ月と１年の期間指定
+  # 直近１ヶ月と直近１年の期間指定
   scope :visited_this_month, -> { where(visit_date: 1.month.ago.beginning_of_day..Time.zone.now.end_of_day) }
   scope :visited_this_year, -> { where(visit_date: 1.year.ago.beginning_of_day..Time.zone.now.end_of_day) }
   

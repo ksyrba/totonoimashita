@@ -21,7 +21,8 @@ class Customer < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :area
-
+  
+  # ゲストログイン用のメソッド
   def self.guest
     find_or_create_by!(name: 'ゲストユーザー' ,email: 'guest@example.com', sex: 1, birthdate: '2000-01-01', area_id: 2) do |user|
       user.password = SecureRandom.urlsafe_base64
