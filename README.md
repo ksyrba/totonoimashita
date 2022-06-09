@@ -35,7 +35,7 @@
 - ユーザー管理機能（管理者）. 
 
 ## 設計書
-## ER図
+### ER図
 <img width="600" alt="totonoimashita_ER diagram" src="https://user-images.githubusercontent.com/98943300/172804624-382dfeae-ffac-4cea-b7c7-a13a1640a59d.png">
 
 ## 開発環境
