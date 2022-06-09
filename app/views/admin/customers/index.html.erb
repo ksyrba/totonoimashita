@@ -32,6 +32,8 @@
             <td>
               <% if (customer.is_deleted == "有効") && (customer.name != "ゲストユーザー") %>
                 <%= link_to '退会させる', unsubscribe_admin_customer_path(customer), method: :patch, "data-confirm" => "本当に退会させてもよろしいですか？", class: "btn btn-sm btn-danger" %>
+              <% elsif (customer.is_deleted == "退会") && (customer.name != "ゲストユーザー") %>
+                <%= link_to '有効にさせる', unsubscribe_admin_customer_path(customer), method: :patch, class: "btn btn-sm btn-primary" %>
               <% end %>
             </td>
           </tr>
